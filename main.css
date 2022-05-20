@@ -39,7 +39,13 @@
     font-size: 30px;
     font-weight: 600;
 }
-
+.container h5{
+    position: fixed;
+    left: 32.5cm;
+    top: 550px;
+    font-size: 30px;
+    font-weight: 600;
+}
 a {
     color: #fff;
     text-decoration: none;
