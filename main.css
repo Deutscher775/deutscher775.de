@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
 .container{
     width: 100%;
     height: 100vh;
@@ -13,6 +14,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .container h1{
     font-size: 80px;
     font-weight: 600;
@@ -25,6 +27,7 @@
     font-size: 30px;
     font-weight: 600;
 }
+
 .container h3{
     position: fixed;
     left: 20cm;
@@ -32,6 +35,7 @@
     font-size: 30px;
     font-weight: 600;
 }
+
 .container h4{
     position: fixed;
     left: 24cm;
@@ -39,6 +43,7 @@
     font-size: 30px;
     font-weight: 600;
 }
+
 .container h5{
     position: fixed;
     left: 32.5cm;
