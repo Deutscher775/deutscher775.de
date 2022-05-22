@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+@media screen and (max-width: 699px) {
+    .resize{
+        width: 200px;
+    }
+    img {
+        position: absolute;
+        top: 150px;
+        left: 33%;
+        border-radius: 50%;
+      }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(160deg, lightblue 40%, yellow);
+        color: linear-gradient(180deg, black, #36393f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container h1{
+        font-size: 200%;
+        font-weight: 600;
+    }
+    
+    .container h2{
+        position: fixed;
+        left: max(10vw,10%);
+        top: 550px;
+        font-size: 4vw;
+        font-weight: 600;
+    }
+    .container h3{
+        position: fixed;
+        left: max(20vw,45%);
+        top: 550px;
+        font-size: 4vw;
+        font-weight: 600;
+    }
+    .container h4{
+        position: fixed;
+        left: 80%;
+        top: 550px;
+        font-size: 4vw;
+        font-weight: 600;
+    }
+    .container h5{
+        position: fixed;
+        left: 40%;
+        top: 620px;
+        font-size: 4vw;
+        font-weight: 600;
+    }
+    .container h6{
+        font-size: 20px;
+        top: 3px;
+        left: 4px;
+        position: absolute;
+    
+    }
+
+
+
+}
+
+
+@media screen and (min-width: 700px) {
+    .resize{
+        width: 300px;
+    }
+    img {
+        position: fixed;
+        top: 60px;
+        left: 42%;
+        border-radius: 50%;
+      }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(160deg, lightblue 40%, yellow);
+        color: linear-gradient(180deg, black, #36393f);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container h1{
+        font-size: max(40px, 5vw);
+        font-weight: 600;
+    }
+    
+    .container h2{
+        position: fixed;
+        left: max(10vw,30vw);
+        top: 550px;
+        font-size: max(15px,2vw);
+        font-weight: 600;
+    }
+    .container h3{
+        position: fixed;
+        left: max(20vw,47vw);
+        top: 550px;
+        font-size: max(15px,2vw);
+        font-weight: 600;
+    }
+    .container h4{
+        position: fixed;
+        left: 63vw;
+        top: 550px;
+        font-size: max(15px,2vw);
+        font-weight: 600;
+    }
+    .container h5{
+        position: fixed;
+        left: 44vw;
+        top: 620px;
+        font-size: max(15px,2vw);
+        font-weight: 600;
+    }
+    .container h6{
+        font-size: 20px;
+        top: 3px;
+        left: 4px;
+        position: absolute;
+    
+    }
+}
+
+a {
+    color: #36393f;
+    text-decoration: none;
+}
+
+a:hover {
+    border-radius: 60px;
+    padding: 0;
+    color: lightcoral;
+    text-decoration: underline;
+    font-size: 120%;
+}
