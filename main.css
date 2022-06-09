@@ -111,6 +111,8 @@
         animation: img 3s ease 0s 1 normal forwards;
       }
     .container{
+        position: fixed;
+        top: 410px;
         width: 100%;
         height: 100vh;
         background-image: linear-gradient(160deg, lightblue 40%, yellow);
