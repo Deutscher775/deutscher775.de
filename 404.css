@@ -10,19 +10,19 @@
 }
 .notfound h1{
     position: absolute;
-    top: 15%;
+    top: 120px;
     left: 10%;
     font-size: 120px;
 }
 .notfound h2{
     position: absolute;
-    top: 30%;
+    top: 260px;
     left: 27%;
     font-size: 20px;
 }
 .notfound img{
     position: absolute;
-    top: 50%;
+    top: 480px;
     left: max(80px, 10%);
     max-width: max(150px, 15vw);
     border-radius: 5%;
