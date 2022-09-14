@@ -11,100 +11,261 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background-color: #fff;
     }
-    .startcard{
-        background-color: #fff;
-        border-radius: 20px;
-        width: 78vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-        font-size: 12px;
-        margin: auto;
-        padding-left: 20px;
-        padding-right: 20px;
+    @media screen and (min-width: 699px) {
+        .startcard{
+            background-color: #fff;
+            border-radius: 20px;
+            width: 78vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+            font-size: 12px;
+            margin: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .programming h1{
+            font-size: 20px;
+        }
+        .programming h2{
+            font-size: 10px;
+        }
+        .startcardandbg img{
+            border-radius: 20px;
+        }
+        .aboutme{
+            left: 10px;
+        }
+        .aboutme h1{
+            background-color: rgb(51, 51, 51);
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 7px;
+            color: #fff;
+        }
+        .informational h1{
+            background-color: rgb(51, 51, 51);
+            box-shadow: 0 5px 12px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 7px;
+        }
+        .informational a{
+            text-decoration: none;
+        }
+        .cards{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 20px;
+        }
+        .cards h3{
+            font-size: 30px;
+            color: black;
+            line-height: 10px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+        .cards h2{
+            color: #fff;
+            font-size: 17px;
+        }
+        .cards a{
+            text-decoration: none;
+        }
+        .status{
+            background-color: rgb(255, 166, 0);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .twitch{
+            background-color: rgb(132, 0, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .tiktok{
+            background-color: rgb(255, 0, 128);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .discord{
+            background-color: rgb(0, 119, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .atomicradio{
+            background-color: rgb(183, 0, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: rgba(0,0,0,0.8);
+        }
     }
-    .programming h1{
-        font-size: 20px;
-    }
-    .programming h2{
-        font-size: 10px;
-    }
-    .startcardandbg img{
-        border-radius: 20px;
-    }
-    .aboutme{
-        left: 10px;
-    }
-    .aboutme h1{
-        background-image: linear-gradient(to right, rgba(209, 94, 255, 0.5), #fff);
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 7px;
-    }
-    .informational h1{
-        background-image: linear-gradient(to right, rgba(209, 94, 255, 0.5), #fff);
-        box-shadow: 0 5px 12px 0 rgba(0,0,0,0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 7px;
-    }
-    .informational a{
-        text-decoration: none;
-    }
-    .status{
-        background-color: rgb(255, 166, 0);
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 11px;
-        width: 300px;
-        font-size: 10px;
-        color: #fff;
-        padding-bottom: 1px;
-    }
-    .status a{
-        font-size: 30px;
-        color: black;
-    }
-    .tiktok{
-        background-color: rgb(255, 0, 128);
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 11px;
-        width: 300px;
-        font-size: 10px;
-        color: #fff;
-        padding-bottom: 1px;
-        position: relative;
-    }
-    .tiktok a{
-        font-size: 30px;
-        color: black;
-    }
-    .twitch{
-        background-color: rgb(153, 0, 255);
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 11px;
-        width: 300px;
-        font-size: 10px;
-        color: #fff;
-        padding-bottom: 1px;
-        position: relative;
-    }
-    .twitch a{
-        font-size: 30px;
-        color: black;
-    }
-    a{
-        color: black;
-    }
-    a:hover{
-        color: rgba(0,0,0,0.8);
+    @media screen and (max-width: 699px) {
+        .startcard{
+            background-color: #fff;
+            border-radius: 20px;
+            width: 78vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+            font-size: 10px;
+            margin: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .programming h1{
+            font-size: 15px;
+        }
+        .programming h2{
+            font-size: 10px;
+        }
+        .aboutme{
+            left: 10px;
+        }
+        .aboutme-text{
+            font-size: 10px;
+        }
+        .startcardandbg img{
+            visibility: hidden;
+        }
+        .aboutme h1{
+            background-color: rgb(51, 51, 51);
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 7px;
+            color: #fff;
+            font-size: 20px;
+        }
+        .informational h1{
+            background-color: rgb(51, 51, 51);
+            box-shadow: 0 5px 12px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 7px;
+        }
+        .informational a{
+            text-decoration: none;
+        }
+        .cards{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 20px;
+        }
+        .cards h3{
+            font-size: 30px;
+            color: black;
+            line-height: 10px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+        .cards h2{
+            color: #fff;
+            font-size: 17px;
+        }
+        .cards a{
+            text-decoration: none;
+        }
+        .status{
+            background-color: rgb(255, 166, 0);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .twitch{
+            background-color: rgb(132, 0, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .tiktok{
+            background-color: rgb(255, 0, 128);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .discord{
+            background-color: rgb(0, 119, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        .atomicradio{
+            background-color: rgb(183, 0, 255);
+            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 11px;
+            width: 300px;
+            font-size: 10px;
+            color: #fff;
+            padding-bottom: 1px;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: rgba(0,0,0,0.8);
+        }
     }
 </style>
 <body>
@@ -124,26 +285,48 @@
     <br><br><br>
     <div class="aboutme">
         <h1>All about me</h1>
-        <div class="aboutme-text"></div>
+        <div class="aboutme-text">
             <h2>I started many projects, but some are my favorites. Those are <br>
             - <a href="https://deutscher775.de/bot/invite">Deutscher Bot</a><br>
             - CustomCommands (comming soon) <br>
             - other Discord Bots :D <br><br>
-            I'd like to study computer science. But me dumb, so i try my best :D
+            I'd like to study computer science. But me dumb, so i try my best :D <br><br>
+            Most of my time listening to music, i spend on <a href="https://atomic.radio">atomicradio</a>, my favorite internatradio. <br>
+            I am helping there at Editor, so the songs are mine ;D 
         </h2>
+        </div>
         <div class="informational">
             <br><br>
             <h1>Here you can find all informational stuff</h1>
+    </div>
+    <div class="cards">
             <div class="status">
-                <h2><a href="https://status.deutscher775.de">Status-Page</a><br>See all my services and check if these are up.</h2>
-            </div>
-            <div class="tiktok">
-                <h2><a href="https://tiktok.com/@deutscher775">TikTok</a><br>Watch my latest videos. Reminder:<br></Reminder:br> I am not making content actively.</h2>
+                <a href="https://status.deutscher775.de">
+                    <h3>Statuspage</h3><h2>See all my services and check if they are up</h2>
+                </a>
             </div>
             <div class="twitch">
-                <h2><a href="https://twitch.tv/deutscher_775">Twitch</a><br>Watch my streams. Reminder:<br></Reminder:br> I am not streaming actively.</h2>
+                <a href="https://twitch.tv/deutscher_775">
+                    <h3>Twitch</h3><h2>Watch my streams. But i do not stream acitvely yet.</h2>
+                </a>
             </div>
-        </div>
+            <div class="tiktok">
+                <a href="https://tiktok.com/@deutscher775">
+                    <h3>TikTok</h3><h2>Watch my videos. But i do not make content acitvely.</h2>
+                </a>
+            </div>
+            <div class="discord">
+                <a href="https://deutscher775.de/dicord">
+                    <h3>Discord</h3><h2>Join my discord server and feel free to chat with me.</h2>
+                </a>
+            </div>
+            <div class="atomicradio">
+                <a href="https://atomic.radio">
+                    <h3>atomicradio</h3><h2>You love music? Well, here are my favorite radio.</h2>
+                </a>
+            </div>
+                
+    </div>
     </div>
 </body>
 </html>
