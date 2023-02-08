@@ -1,333 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deutscher 775</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deutscher 775</title>
 </head>
 <style>
-    body{
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-color: #fff;
+  body {
+    background-color: #011522;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .card {
+    width: 190px;
+    height: 230px;
+    margin-top: 12px;
+    margin-left: 15px;
+    background-color: #011522;
+    color: #fff;
+    border-radius: 13px;
+    align-items: center;
+    justify-self: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .card {
+     width: 100%;
     }
-    @media screen and (min-width: 699px) {
-        .startcard{
-            background-color: #fff;
-            border-radius: 20px;
-            width: 78vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-            font-size: 12px;
-            margin: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        .programming h1{
-            font-size: 20px;
-        }
-        .programming h2{
-            font-size: 10px;
-        }
-        .startcardandbg img{
-            border-radius: 20px;
-        }
-        .aboutme{
-            left: 10px;
-        }
-        .aboutme h1{
-            background-color: rgb(51, 51, 51);
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 7px;
-            color: #fff;
-        }
-        .informational h1{
-            background-color: rgb(51, 51, 51);
-            box-shadow: 0 5px 12px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 7px;
-        }
-        .informational a{
-            text-decoration: none;
-        }
-        .cards{
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            grid-gap: 20px;
-        }
-        .cards h3{
-            font-size: 30px;
-            color: black;
-            line-height: 10px;
-            margin-bottom: 5px;
-            margin-top: 20px;
-        }
-        .cards h2{
-            color: #fff;
-            font-size: 17px;
-        }
-        .cards a{
-            text-decoration: none;
-        }
-        .status{
-            background-color: rgb(255, 166, 0);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .twitch{
-            background-color: rgb(132, 0, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .tiktok{
-            background-color: rgb(255, 0, 128);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .discord{
-            background-color: rgb(0, 119, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .atomicradio{
-            background-color: rgb(183, 0, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        a{
-            color: black;
-        }
-        a:hover{
-            color: rgba(0,0,0,0.8);
-        }
+    .card-middle {
+      padding-bottom: 2px;
     }
-    @media screen and (max-width: 699px) {
-        .startcard{
-            background-color: #fff;
-            border-radius: 20px;
-            width: 78vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-            font-size: 10px;
-            margin: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        .programming h1{
-            font-size: 15px;
-        }
-        .programming h2{
-            font-size: 10px;
-        }
-        .aboutme{
-            left: 10px;
-        }
-        .aboutme-text{
-            font-size: 10px;
-        }
-        .startcardandbg img{
-            visibility: hidden;
-        }
-        .aboutme h1{
-            background-color: rgb(51, 51, 51);
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 7px;
-            color: #fff;
-            font-size: 20px;
-        }
-        .informational h1{
-            background-color: rgb(51, 51, 51);
-            box-shadow: 0 5px 12px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 7px;
-        }
-        .informational a{
-            text-decoration: none;
-        }
-        .cards{
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            grid-gap: 20px;
-        }
-        .cards h3{
-            font-size: 30px;
-            color: black;
-            line-height: 10px;
-            margin-bottom: 5px;
-            margin-top: 20px;
-        }
-        .cards h2{
-            color: #fff;
-            font-size: 17px;
-        }
-        .cards a{
-            text-decoration: none;
-        }
-        .status{
-            background-color: rgb(255, 166, 0);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .twitch{
-            background-color: rgb(132, 0, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .tiktok{
-            background-color: rgb(255, 0, 128);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .discord{
-            background-color: rgb(0, 119, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        .atomicradio{
-            background-color: rgb(183, 0, 255);
-            box-shadow: 0 10px 18px 0 rgba(0,0,0,0.5);
-            padding-left: 10px;
-            padding-right: 10px;
-            border-radius: 11px;
-            width: 300px;
-            font-size: 10px;
-            color: #fff;
-            padding-bottom: 1px;
-        }
-        a{
-            color: black;
-        }
-        a:hover{
-            color: rgba(0,0,0,0.8);
-        }
+  }
+
+  .card-wide {
+    width: clamp(300px, 30%, 25vw);
+    height: 450px;
+    margin: min(14vw, 100px);
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .card-middle {
+    width: min-content;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding-bottom: 2px;
+    padding-right: 20px;
+    left: 20vw;
+    right: 20vw;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: content-box;
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+  }
+
+  .circle {
+    padding: 0 4px;
+  }
+
+  .box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+  }
+
+  .red {
+    background-color: #ff605c;
+  }
+
+  .yellow {
+    background-color: #ffbd44;
+  }
+
+  .green {
+    background-color: #00ca4e;
+  }
+
+  .card-content {
+    margin: 10px;
+  }
+
+  .card-middle-content {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  .card-middle-resp {
+    display: inherit;
+  }
+
+  @media screen and (max-width: 1558px) {
+    .card-middle-resp {
+      flex-direction: column;
     }
+    .card-middle {
+      height: 500px;
+      width: 630px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .card-wide{
+      margin: 0 auto;
+      margin-bottom: 150px;
+      margin-top: 50px;
+    }
+    .card-middle-content {
+      flex-direction: column;
+    }
+    .card-middle {
+      height: min-content;
+      width: 97%;
+      padding-right: 30px;
+    }
+  }
+
+  .button {
+    font-family: inherit;
+    color: white;
+    padding: 0.35em 0;
+    font-size: 17px;
+    border: none;
+    border-radius: 0.7em;
+    letter-spacing: 0.08em;
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 2.1em;
+    padding-left: 2.8em;
+    padding-right: 0.9em;
+    margin: 5px;
+  }
+
+  .button .icon {
+    background: #fff;
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 1.6em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0.4em;
+    transition: all 0.5s;
+  }
+
+  .button:hover .icon {
+    width: calc(100% - 0.80rem);
+    border-radius: 0.5em;
+    height: 1.6em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    color: none;
+    background: none;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+
 </style>
+
 <body>
-    <div class="startcardandbg">
-        <img src="website.png" alt="bgimg">
-        <div class="startcard">
-            <div class="intro">
-                <h1>Hey, 👋<br>
-                I am Deutscher aka Jason and i like stuff all around tech. <br>
-                In my freetime i code Discord bots, learn Python and develop websites like this one.<br>
-                I am also a big music lover. I mostly listen to House. You can listen to my <a href="https://deutscher775.de/bestmusicfirst">
-                Spotify playlist</a> to check out my favorite songs.<br>
-                Not to forget, i am from Germany and love to sing to songs.(sadly my voice is not capable to do this so i rather sing alone (╥﹏╥))<br></h1>
+  <div class="card-wide">
+    <div class="tools">
+      <div class="circle">
+        <span class="red box"></span>
+      </div>
+      <div class="circle">
+        <span class="yellow box"></span>
+      </div>
+      <div class="circle">
+        <span class="green box"></span>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="pfp" style="margin: auto; display: block;">
+        <img src="./assets/image.jpg" alt=""
+          style="height: 200px; width: 200px; border-radius: 40px; margin: auto; display: block;">
+      </div>
+      <p style="font-size: 30px">
+        Hello, i am Jason.
+      </p>
+      <p style="font-size: 20px; margin-top: -25px">
+        Hobby developer and loves to listen to music.
+      </p>
+      <div class="buttons" style="display: flex;">
+        <form action="https://discordapp.com/users/690123872674119710">
+          <button class="button" , style="background-color: #5865f2;">
+            <div class="icon">
+              <img src="./assets/discord-icon.svg" alt="discord" , height="18" ,
+                width="18" />
             </div>
+            <p>Discord</p>
+          </button>
+        </form>
+        <form action="https://github.com/Deutscher775">
+          <button class="button" , style="background-color: #011522;">
+            <div class="icon">
+              <img src="./assets/github-logo.svg" alt="github" , height="26" ,
+                width="26"/>
+            </div>
+            <p>Github</p>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-middle">
+    <div class="card-middle-content" style="display: flex;">
+      <div class="card-middle-resp">
+      <div class="card">
+        <div class="tools">
+          <div class="circle">
+            <span class="red box"></span>
+          </div>
+          <div class="circle">
+            <span class="yellow box"></span>
+          </div>
+          <div class="circle">
+            <span class="green box"></span>
+          </div>
         </div>
-    </div>
-    <br><br><br>
-    <div class="aboutme">
-        <h1>All about me</h1>
-        <div class="aboutme-text">
-            <h2>I started many projects, but some are my favorites. Those are <br>
-            - <a href="https://deutscher775.de/bot/invite">Deutscher Bot</a><br>
-            - CustomCommands (comming soon) <br>
-            - other Discord Bots :D <br><br>
-            I'd like to study computer science. But me dumb, so i try my best :D <br><br>
-            Most of my time listening to music, i spend on <a href="https://atomic.radio">atomicradio</a>, my favorite internetradio. <br>
-            I am helping there as Editor, so the songs are mine ;D 
-        </h2>
+          <div class="card-content" style="text-align: center;">
+            <p style="font-size: 20px;">
+              atomicradio
+            </p>
+          </div>
+          <form action="https://atomic.radio">
+            <button class="button" , style="background-color: #d27dff; margin: 0 auto; margin-top: 50px;">
+              <div class="icon">
+                <img src="./assets/apple-touch-icon-180x180-precomposed.png" alt="atomicradio" , height="20" ,
+                  width="20" style="border-radius: 10px;" />
+              </div>
+              <p>Listen in</p>
+            </button>
+          </form>
         </div>
-        <div class="informational">
-            <br><br>
-            <h1>Here you can find all informational stuff</h1>
+        <div class="card">
+          <div class="tools">
+            <div class="circle">
+              <span class="red box"></span>
+            </div>
+            <div class="circle">
+              <span class="yellow box"></span>
+            </div>
+            <div class="circle">
+              <span class="green box"></span>
+            </div>
+          </div>
+          <div class="card-content" style="text-align: center;">
+            <p style="font-size: 20px;">
+              Guildcord
+            </p>
+          </div>
+          <form action="https://discord.gg/zrES6Ve6Qw">
+            <button class="button" , style="background-color: #e09304; margin: 0 auto; margin-top: 50px;">
+              <div class="icon">
+                <img src="./assets/guildcord-logo.png" alt="guildcord" , height="20" ,
+                  width="20" style="border-radius: 10px;" />
+              </div>
+              <p>Invite today</p>
+            </button>
+          </form>
+        </div>
+
     </div>
-    <div class="cards">
-            <div class="status">
-                <a href="https://status.deutscher775.de">
-                    <h3>Statuspage</h3><h2>See all my services and check if they are up</h2>
-                </a>
+    <div class="card-middle-resp">
+      <div class="card">
+        <div class="tools">
+          <div class="circle">
+            <span class="red box"></span>
+          </div>
+          <div class="circle">
+            <span class="yellow box"></span>
+          </div>
+          <div class="circle">
+            <span class="green box"></span>
+          </div>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <p style="font-size: 20px;">
+            Twitch
+          </p>
+        </div>
+        <form action="https://aniworld.to/user/profil/deutschrrrrr">
+          <button class="button" , style="background-color: #8a42f2; margin: 0 auto; margin-top: 50px;">
+            <div class="icon">
+              <img src="./assets/twitch-logo.png" alt="twitch" , height="20" ,
+                width="20" style="border-radius: 0px;"/>
             </div>
-            <div class="twitch">
-                <a href="https://twitch.tv/deutscher_775">
-                    <h3>Twitch</h3><h2>Watch my streams. But i do not stream actively yet.</h2>
-                </a>
+            <p>Follow</p>
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="tools">
+          <div class="circle">
+            <span class="red box"></span>
+          </div>
+          <div class="circle">
+            <span class="yellow box"></span>
+          </div>
+          <div class="circle">
+            <span class="green box"></span>
+          </div>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <p style="font-size: 20px;">
+            TikTok
+          </p>
+        </div>
+        <form action="https://aniworld.to/user/profil/deutschrrrrr">
+          <button class="button" , style="background-color: black; margin: 0 auto; margin-top: 50px;">
+            <div class="icon">
+              <img src="./assets/tiktok-logo.png" alt="tiktok" , height="20" ,
+                width="20" style="border-radius: 3px;"/>
             </div>
-            <div class="tiktok">
-                <a href="https://tiktok.com/@deutscher775">
-                    <h3>TikTok</h3><h2>Watch my videos. But i do not make content actively.</h2>
-                </a>
-            </div>
-            <div class="discord">
-                <a href="https://deutscher775.de/dicord">
-                    <h3>Discord</h3><h2>Join my discord server and feel free to chat with me.</h2>
-                </a>
-            </div>
-            <div class="atomicradio">
-                <a href="https://atomic.radio">
-                    <h3>atomicradio</h3><h2>You love music aswell? Here is my favorite radio.</h2>
-                </a>
-            </div>
-                
+            <p>Follow</p>
+          </button>
+        </form>
+      </div>
     </div>
+    <div class="card-middle-resp">
+    <div class="card">
+      <div class="tools">
+        <div class="circle">
+          <span class="red box"></span>
+        </div>
+        <div class="circle">
+          <span class="yellow box"></span>
+        </div>
+        <div class="circle">
+          <span class="green box"></span>
+        </div>
+      </div>
+      <div class="card-content" style="text-align: center;">
+        <p style="font-size: 20px;">
+          Spotify
+        </p>
+      </div>
+      <form action="https://open.spotify.com/user/zb7fn0v8eyw2m62qn5tyukiht">
+        <button class="button" , style="background-color: #1ed760; margin: 0 auto; margin-top: 50px;">
+          <div class="icon">
+            <img src="./assets/spotify-logo.svg" alt="spotify" , height="20" ,
+              width="20" style="border-radius: 10px;" />
+          </div>
+          <p>My profile</p>
+        </button>
+      </form>
     </div>
+
+    <div class="card">
+      <div class="tools">
+        <div class="circle">
+          <span class="red box"></span>
+        </div>
+        <div class="circle">
+          <span class="yellow box"></span>
+        </div>
+        <div class="circle">
+          <span class="green box"></span>
+        </div>
+      </div>
+      <div class="card-content" style="text-align: center;">
+        <p style="font-size: 20px;">
+          Aniworld
+        </p>
+      </div>
+      <form action="https://aniworld.to/user/profil/deutschrrrrr">
+        <button class="button" , style="background-color: #637cf9; margin: 0 auto; margin-top: 50px;">
+          <div class="icon">
+            <img src="./assets/aniworld-logo.png" alt="aniworld" , height="20" ,
+              width="20" style="border-radius: 10px;" />
+          </div>
+          <p>My profile</p>
+        </button>
+      </form>
+    </div>
+
+    </div>
+  </div>
 </body>
 </html>
-
