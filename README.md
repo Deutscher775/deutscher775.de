@@ -1,1 +1,1 @@
-This website is currently under development. Please look again later. :D
+Just made it because i was bored. :D
