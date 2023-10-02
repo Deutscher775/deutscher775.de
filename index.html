@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/assets/image.jpg">
+  <link rel="icon" href="/assets/image.jpg" style="border-radius: 50px;">
   <title>Deutscher 775</title>
 </head>
 <style>
@@ -213,6 +213,19 @@
     transition: all 0.5s;
   }
 
+  .button .icon-atomic {
+    background: #fff;
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 1.6em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0.4em;
+    transition: all 0.5s;
+  }
+
   .button:hover .icon {
     width: calc(100% - 0.80rem);
     border-radius: 0.5em;
@@ -304,9 +317,9 @@
             </p>
           </div>
           <form action="https://atomic.radio">
-            <button class="button" , style="background-color: #d27dff; margin: 0 auto; margin-top: 50px;">
-              <div class="icon">
-                <img src="./assets/apple-touch-icon-180x180-precomposed.png" alt="atomicradio" , height="20" ,
+            <button class="button" , style="background-color: #a9f923; margin: 0 auto; margin-top: 50px; color: black;">
+              <div class="icon-atomic">
+                <img src="./assets/atomic.png" alt="atomicradio" , height="20" ,
                   width="20" style="border-radius: 10px;" />
               </div>
               <p>Listen in</p>
