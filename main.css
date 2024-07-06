@@ -72,17 +72,6 @@ body {
   border-radius: 10px;
 }
 
-.discord-activity {
-  position: absolute;
-  width: 410px;
-  height: 220px;
-  margin: 0 auto;
-  margin-top: 20px;
-  border-radius: 10px;
-  top: 100px;
-  left: 60vw;
-}
-
 .card-middle {
   width: min-content;
   height: auto;
@@ -381,20 +370,7 @@ a {
   .card-middle {
     margin-top: 50px;
   }
-}
-
-@media screen and (min-width: 790px) {
-  .discord-activity {
-    position: absolute;
-    width: 410px;
-    height: 220px;
-    margin: 0 auto;
-    margin-top: 20px;
-    border-radius: 10px;
-    top: 200px;
-    left: 78vw;
-  }
-  .pyleaf {
+    .pyleaf {
     width: 100vw;
     height: auto;
     margin: 0 auto;
@@ -458,6 +434,31 @@ a {
   .bottom-texts {
     margin-top: 30px;
     height: max-content;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .discord-activity {
+    position: relative;
+    margin-left: 0;
+    float: none;
+    margin: 0 auto;
+    margin-top: 50px;
+    transform: translate(-50%, -50%);
+  }
+  
+}
+
+@media screen and (min-width: 790px) {
+  .discord-activity {
+    position: absolute;
+    width: 410px;
+    height: 220px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    top: 200px;
+    left: 78vw;
   }
 }
 
@@ -595,5 +596,16 @@ a {
 
   #imprint {
     font-size: 18px;
+  }
+  .discord-activity {
+    position: relative;
+    width: 410px;
+    height: 220px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: -100px;
   }
 }
