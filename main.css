@@ -484,6 +484,17 @@ a {
   }
 }
 
+@media screen and (min-width: 1800px){
+  .pyleaf img{
+    width: 350px;
+    height: 350px;
+  }
+
+  .astroid img {
+    width: 350px;
+    height: 350px;
+}
+
 @media screen and (max-width: 1920px) {
   .discord-activity {
     position: relative;
