@@ -273,6 +273,7 @@ a {
   width: 70vw;
   margin-top: 100px;
   border-radius: 40px;
+  z-index: 2;
 }
 
 .astroid-img {
@@ -287,9 +288,10 @@ a {
 .astroid-text {
   position: relative;
   float: left;
-  color: #fff;
   mix-blend-mode: difference;
+  color: black;
   width: 800px;
+  z-index: inherit;
 }
 
 .astroid-text h1 {
@@ -313,10 +315,10 @@ a {
   left: -50px;
   border: 300px solid #011522;
   -webkit-transform: rotate(-9deg);
-  transform: rotate(-13deg);
+  transform: rotate(-9deg);
   position: absolute;
   background-color: #011522;
-  z-index: 1;
+  z-index: 2;
 }
 
 .imprint {
@@ -342,6 +344,7 @@ a {
 
 
 /* -------- Responsive CCS -------- */
+
 
 @media screen and (max-width: 1458px) {
   .card-middle-resp {
@@ -409,6 +412,7 @@ a {
     align-items: center;
     text-align: center;
     z-index: 2;
+    isolation: isolate;
   }
 
   .astroid-img {
@@ -424,16 +428,31 @@ a {
 
   .astroid-text {
     margin-left: 0;
+    mix-blend-mode: difference;
     width: 90vw;
     margin-top: 40px;
     text-align: center;
     height: max-content;
     transform: translateX(50%, -50%);
+    z-index: 0;
+    color: #fff;
   }
 
   .bottom-texts {
     margin-top: 30px;
     height: max-content;
+  }
+}
+
+@media screen and (min-width: 1459px){
+  .pyleaf img{
+    width: 220px;
+    height: 220px;
+  }
+
+  .astroid img {
+    width: 220px;
+    height: 220px;
   }
 }
 
@@ -578,6 +597,7 @@ a {
   .astroid-text {
     margin-left: 0;
     width: 90vw;
+    color: black;
     text-align: center;
     height: max-content;
     transform: translateX(50%, -50%);
