@@ -391,11 +391,10 @@ a {
 
   .discord-activity {
     position: relative;
-    margin-left: 0;
+    margin-left: 50%;
     float: none;
-    margin: 0 auto;
     margin-top: 50px;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
   }
 
   .card-middle {
