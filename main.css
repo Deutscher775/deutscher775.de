@@ -484,7 +484,7 @@ a {
   }
 }
 
-@media screen and (min-width: 1800px){
+@media screen and (min-width: 1800px) {
   .pyleaf img{
     width: 350px;
     height: 350px;
@@ -493,6 +493,7 @@ a {
   .astroid img {
     width: 350px;
     height: 350px;
+}
 }
 
 @media screen and (max-width: 1920px) {
@@ -510,8 +511,8 @@ a {
 @media screen and (min-width: 790px) {
   .discord-activity {
     position: absolute;
-    width: 410px;
-    height: 220px;
+    width: 350px;
+    height: 200px;
     margin: 0 auto;
     margin-top: 20px;
     border-radius: 10px;
@@ -656,8 +657,8 @@ a {
 
   .discord-activity {
     position: relative;
-    width: 410px;
-    height: 220px;
+    width: 350px;
+    height: 200px;
     margin: 0 auto;
     border-radius: 10px;
     margin-top: 150px;
