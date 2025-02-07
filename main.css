@@ -514,7 +514,7 @@ a {
     height: 200px;
     margin: 0 auto;
     margin-top: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     top: 200px;
     left: 78vw;
   }
@@ -659,7 +659,7 @@ a {
     width: 350px;
     height: 200px;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 150px;
     left: 50%;
     transform: translate(-50%, -50%);
