@@ -727,14 +727,14 @@
             style="opacity: 0; filter: brightness(0)">
         <script>
             window.onload = async () => {
-                await fetch("https://api.deutscher775.de/presence/690123872674119710?as_json=true")
+                await fetch("https://api.deutscher775.de/presence/690123872674119710?banner_url=true")
                     .then(res => res.json())
                     .then(data => {
                         document.getElementById('hero-banner').src = data.banner ? data.banner : '';
                         transition_secs = 2;
                         setTimeout(() => {
                             document.getElementById('hero-banner').style.opacity = 1;
-                            document.getElementById('hero-banner').style.filter = 'brightness(0.5)';
+                            document.getElementById('hero-banner').style.filter = 'brightness(0.5) blur(5px)';
                         }, transition_secs * 1000);
 
                     });
