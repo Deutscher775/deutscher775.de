@@ -249,6 +249,19 @@
             }
         }
 
+        @media screen and (max-width: 768px) {
+            .header-name {
+                margin-top: 80px;
+                margin-left: 10px;
+            }
+            .code-editor {
+                margin-bottom: 120px;
+            }
+            .about-content {
+                margin-top: -40px;
+            }
+        }
+
         /* Wave Transition Styles */
         .wave-transition {
             --tw-gradient-to: #fff var(--tw-gradient-to-position);
@@ -401,6 +414,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
         }
+
 
         /* Enhanced Animations */
         @keyframes gradient {
@@ -646,7 +660,6 @@
                 <!-- Logo -->
                 <a href="#"
                     class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
-                    Deutscher 775 | Jason
                 </a>
 
                 <!-- Desktop Menu -->
@@ -674,6 +687,7 @@
                     <a href="#about" class="nav-link text-center">About</a>
                     <a href="#projects" class="nav-link text-center">Projects</a>
                     <a href="#contact" class="nav-link text-center">Contact</a>
+                    <a href="https://astroid.cc/imprint" class="nav-link text-center">Imprint</a>
                 </div>
             </div>
         </div>
@@ -734,9 +748,8 @@
                         transition_secs = 2;
                         setTimeout(() => {
                             document.getElementById('hero-banner').style.opacity = 1;
-                            document.getElementById('hero-banner').style.filter = 'brightness(0.5) blur(5px)';
+                            document.getElementById('hero-banner').style.filter = 'brightness(0.3) blur(10px)';
                         }, transition_secs * 1000);
-
                     });
 
             }
@@ -749,7 +762,7 @@
                 <div class="lg:w-1/2 space-y-8 stagger-fade-in">
                     <div class="space-y-4">
                         <h1
-                            class="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-indigo-600 text-transparent bg-clip-text leading-tight py-5 hover:scale-105 transition-transform duration-300">
+                            class="header-name text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-indigo-600 text-transparent bg-clip-text leading-tight py-5 hover:scale-105 transition-transform duration-300">
                             Jason
                         </h1>
                         <p class="text-gray-400 text-lg leading-relaxed mt-6 fade-in">
@@ -792,11 +805,13 @@
     <span class="text-green-400">'skills'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">[</span><span class="text-orange-300">'API'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'Discord Bots'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'SurrealDB'</span><span class="text-yellow-300">]</span><span class="text-gray-400">,</span>
     <span class="text-green-400">'passion'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Building backend applications and Discord Bots'</span><span class="text-gray-400">,</span>
     <span class="text-green-400">'languages'</span><span class="text-gray-400">: <span class="text-yellow-300">[</span></span><span class="text-orange-300">'Python'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'JavaScript'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'SurrealQL'</span><span class="text-yellow-400">]</span><span class="text-gray-400">,</span>
+    <span class="text-green-400">'dependencies'</span><span class="text-gray-400">: <span class="text-yellow-300">[</span></span><span class="text-orange-300">'Music'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'atomicradio'</span><span class="text-gray-400"><span class="text-yellow-400">]</span><span class="text-gray-400">,</span>
     <span class="text-green-400">'code'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">lambda</span> <span class="text-gray-400">:</span> <span class="text-yellow-300">[</span>
         <span class="text-purple-400">while</span> <span class="text-yellow-300">True</span><span class="text-gray-400">:</span>
+            <span class="text-blue-400">ensure_service</span><span class="text-yellow-300">(<span class="text-orange-300">'atomicradio'</span>)</span><span class="text-gray-400">,</span> <span class="text-gray-600"><a href="https://atomic.radio"># https://atomic.radio</a></span>
             <span class="text-blue-400">eat</span><span class="text-yellow-300">(<span class="text-orange-300">'pizza'</span>)</span><span class="text-gray-400">,</span>
             <span class="text-blue-400">sleep</span><span class="text-yellow-300">()</span><span class="text-gray-400">,</span>
-            <span class="text-blue-400">code</span><span class="text-yellow-300">(<span class="text-orange-300">'astroid'</span>)</span><span class="text-gray-400">,</span>
+            <span class="text-blue-400">code</span><span class="text-yellow-300">(<span class="text-orange-300">'astroid'</span>)</span><span class="text-gray-400">,</span> <span class="text-gray-600"><a href="https://astroid.cc"># https://astroid.cc</a></span>
             <span class="text-blue-400">repeat</span><span class="text-yellow-300">()</span>
     <span class="text-yellow-300">]</span>
 <span class="text-yellow-300">}</span><span class="text-gray-400">;</span></code></pre>
@@ -819,7 +834,7 @@
         </div>
 
         <!-- About Content with more spacing -->
-        <div class="container mx-auto px-4 pt-16">
+        <div class="about-content container mx-auto px-4 pt-16">
             <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2">
@@ -1181,10 +1196,18 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="text-center md:text-left mb-8 md:mb-0">
                         <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
-                        <div class="flex space-x-6 justify-center md:justify-start">
+                        <div class="flex space-x-6 justify-center md:justify-start hover:scale-105 transition-transform duration-300">
                             <a href="https://github.com/deutscher775"
-                                class="hover:text-primary transition-colors duration-300 text-3xl">
+                                class="hover:scale-105 transition-transform duration-300 text-3xl">
                                 <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://tiktok.com/deutscher775"
+                                class="hover:scale-105 transition-transform duration-300 text-3xl">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://discordapp.com/users/690123872674119710"
+                                class="hover:scale-105 transition-transform duration-300 text-3xl">
+                                <i class="fab fa-discord"></i>
                             </a>
                         </div>
                     </div>
