@@ -1,7 +1,93 @@
-<link rel="stylesheet" href="404.css">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Windows 10 BSOD</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 5rem;
+				background-color: #005eac; /* typisches Windows 10 BSOD-Blau */
+				color: white;
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				font-size: 1.5rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				height: max-content;
+			}
 
-<div class="notfound">
-    <h1>:(</h1>
-    <h2>This webpage doesn't exist. Check the URL you typed. If this page still pop up contact the Support.</h2>
-    <img src="qrcode.png" alt="">
-</div>
+			.sad-face {
+				font-size: 150px;
+				margin-bottom: 2rem;
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				font-weight: normal;
+				margin: 0 0 1rem 0;
+			}
+
+			p {
+				margin: 0 0 1rem 0;
+				max-width: 800px;
+			}
+
+			.error-code {
+				font-family: monospace;
+			}
+
+			.percentage {
+				font-size: 1.5rem;
+				margin: 2rem 0;
+				animation: loading 10s linear forwards;
+			}
+
+			@keyframes loading {
+				from {
+					content: "1% complete";
+				}
+				to {
+					content: "100% complete";
+				}
+			}
+            
+		</style>
+	</head>
+	<body>
+		<span class="sad-face">:(</span>
+
+		<h1>Your Traffic encountered a problem</h1>
+
+		<p>Check the URL for any typos, errors or missing parts.</p>
+
+		<div
+			class="percentage"
+			id="percent">
+			1% complete
+		</div>
+
+		<p>
+			If you'd like to know more, you can search online later for this error:
+		</p>
+		<p class="error-code">404_PAGE_NOT_FOUND</p>
+		<img
+			src="assets/qrcode.png"
+			alt="QR Code"
+			style="width: 150px; margin-top: 2rem" />
+		<script>
+			let percent = 0;
+			const percentDisplay = document.getElementById("percent");
+
+			const interval = setInterval(() => {
+				percent++;
+				percentDisplay.textContent = `${percent}% complete`;
+
+				if (percent >= 100) {
+					window.location.href = "https://s.jesn.zip/u/way/Skrillex%20-%20Bangarang%20(Ft.%20Sirah)%20[Official%20Audio].mp4";
+				}
+			}, 5000); // 1 Sekunde Intervall
+		</script>
+	</body>
+</html>
