@@ -35,6 +35,16 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                display: none;
+            }
+        }
         #loading-screen {
             position: fixed;
             top: 0;
@@ -48,6 +58,7 @@
             align-items: center;
             z-index: 9999;
         }
+        
         .loader {
             display: flex;
             gap: 0.6rem;
@@ -702,11 +713,19 @@
             width: 30%;
             /* Adjust width so multiple slides fit in a single row */
         }
+        .zero-two-bg {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 140%;
+            z-index: -1;
+            top: -60px;
+            filter: blur(10px) saturate(0.7);
+        }
     </style>
 </head>
 
 <body class=" overflow-overlay">
-    <!-- Ladebildschirm -->
     <div id="loading-screen">
         <div class="text" id="mainText" style="
           font-size: 1.5rem;
@@ -772,7 +791,6 @@
         </script>
     </div>
 
-    <!-- Hauptinhalt -->
     <div id="main-content" style="display: none;">
         <!-- Modified versoion of Tailwind-Colorful-Portfolio
 
@@ -781,6 +799,9 @@
 
     License: MIT
     
+    Why do i put the css in the html file? 
+    Because i am too lazy to make a css file and link it here.
+    Also it needs to load the css file and this would make the loading time longer with slow internet.
     -->
         <!-- Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -883,7 +904,7 @@
                                 Jason
                             </h1>
                             <p class="text-gray-400 text-lg leading-relaxed mt-6 fade-in">
-                                Hobbyist full-stack developer with passion, building mostly backend systems and APIs.
+                                Hobbyist full-stack developer with passion, building mostly backend systems and APIs. Zero Two enthusiast.
                             </p>
                         </div>
 
@@ -893,10 +914,6 @@
                                     class="btn bg-white hover:bg-gray-50 text-gray-900 px-8 py-3 rounded-full inline-block transition-all hover:shadow-lg">
                                     View Projects
                                 </span></a>
-                            <a href="#contact"
-                                class="btn bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full inline-block transition-all hover:shadow-lg btn-hover-effect">
-                                Contact Me
-                            </a>
                         </div>
                     </div>
 
@@ -950,8 +967,18 @@
                     </path>
                 </svg>
             </div>
+            <!-- Modern Wave Divider -->
+            <div class="absolute top-30 left-0 w-full overflow-hidden" style="transform: translateY(-99%) rotate(180deg);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"
+                    class="w-full h-[160px]">
+                    <path fill="#ffffff" fill-opacity="1"
+                        d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+            </div>
 
             <!-- About Content with more spacing -->
+            <img class="zero-two-bg" src="assets/zero_two_bg.png" alt="">
             <div class="about-content container mx-auto px-4 pt-16">
                 <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
                 <div class="flex flex-col md:flex-row items-center gap-12">
@@ -964,7 +991,8 @@
                             I'm an 18 year old hobbyist full-stack developer from Germany. I have a passion for building
                             backend systems and APIs. I'm currently working on a project called Astroid, a simple to use
                             multi-platform bridge that connect various platforms like Discord, Nerimity and Guilded
-                            together.
+                            together. <br>
+                            I love Zero Two, she just cute af.
                         </p>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="flex items-center">
@@ -994,16 +1022,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="relative bg-white py-24">
-            <!-- Modern Wave Divider -->
-            <div class="absolute top-0 left-0 w-full overflow-hidden" style="transform: translateY(-99%)">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"
-                    class="w-full h-[160px]">
-                    <path fill="#ffffff" fill-opacity="1"
-                        d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                    </path>
-                </svg>
-            </div>
+        <section id="about" class="relative bg-white my-24">
 
             <!-- Skills Section with Background Effects -->
             <section id="skills" class="section-wrapper py-20 bg-[#03012C] text-white">
@@ -1595,7 +1614,8 @@
             };
             xhr.send();
             // Ladebildschirm ausblenden
-            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('loading-screen').style.animation = "animation: fadeOut 0.5s forwards;"
+            
             // Hauptinhalt anzeigen
             document.getElementById('main-content').style.display = 'block';
         });
