@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Jasooon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#fc7ea2',
+                        secondary: '#ffbace',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Header Menu Styles */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+
+        .bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            object-position: 70% center;
+            filter: contrast(2) saturate(1.2) brightness(1.2);
+        }
+
+        @media screen and (max-width: 1700px) {
+            .bgimg {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                filter: contrast(2) saturate(1.2) brightness(1.2);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .bgimg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                z-index: -1;
+                filter: contrast(2) saturate(1.2) brightness(1.2);
+            }
+
+             
+            body {
+                overflow: visible;
+            }
+        }
+            
+
+    </style>
+</head>
+
+<body class="text-white bg-[#03012C]">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="nav-menu px-4 py-3 mx-auto transition-all duration-300 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-300 to-indigo-200 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    Jasooon
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/#about" class="nav-link">About</a>
+                    <a href="/#projects" class="nav-link">Projects</a>
+                    <a href="https://astroid.cc/imprint" class="nav-link">Imprint</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 text-gray-900">
+        <img src="assets/zero_two_rose.png" alt="" class="bgimg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-200">Contact Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Contact Form -->
+                <div class="md:w-1/2">
+                    <form action="https://formspree.io/f/xblgvqoe" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-200">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Zero Two"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-200">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="zerotwo@parasites.com"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-200">Message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Hey, i hacked your computer, send me 1000€ PayPal or Google Play gift card or i will delete your files."
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-pink-600 transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="md:w-1/2 space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-300">Email</h3>
+                        <a href="mailto:mail@deutscher775.de" class="text-gray-300">mail@deutscher775.de</a>
+                        <p class="text-gray-400 text-xs">You can send me anything here, <br> but please be patient, i will reply <br> as soon as possible.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-300">Phone</h3>
+                        <a href="tel:+4915901147061" class="text-gray-300">+49 159 01147061</a>
+                        <p class="text-gray-400 text-xs">This number is for business or <br> urgent inquiries only.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-300">Platforms</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/deutscher775" class="text-2xl text-gray-400 hover:text-secondary">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://tiktok.com/@deutscher775" class="text-2xl text-gray-400 hover:text-secondary">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://discordapp.com/users/690123872674119710" class="text-2xl text-gray-400 hover:text-secondary">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
+                    <div class="flex space-x-6 justify-center md:justify-start">
+                        <a href="https://github.com/deutscher775" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://tiktok.com/deutscher775" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://discordapp.com/users/690123872674119710" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-200">&copy;
+                        <script>document.write(new Date().getFullYear())</script> deutscher775.de - All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

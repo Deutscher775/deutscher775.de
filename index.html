@@ -817,7 +817,7 @@
                         <a href="#hero" class="nav-link">Home</a>
                         <a href="#about" class="nav-link">About</a>
                         <a href="#projects" class="nav-link">Projects</a>
-                        <a href="#contact" class="nav-link">Contact</a>
+                        <a href="./contact" class="nav-link">Contact</a>
                         <a href="https://astroid.cc/imprint" class="nav-link">Imprint</a>
                     </div>
 
@@ -1591,7 +1591,7 @@
         }
         window.addEventListener('load', () => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://api.deutscher775.de/presence/690123872674119710?banner_url=true');
+            xhr.open('GET', 'https://api.deutscher775.de/presence/690123872674119710/banner');
             xhr.onload = () => {
             if (xhr.status >= 200 && xhr.status < 300) {
                 const data = JSON.parse(xhr.responseText);
