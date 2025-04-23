@@ -27,14 +27,29 @@
     </script>
     <style>
         @keyframes loaderfadeinout {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
+
         @keyframes loaderfade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
+
         @keyframes fadeOut {
             from {
                 opacity: 1;
@@ -45,6 +60,7 @@
                 display: none;
             }
         }
+
         #loading-screen {
             position: fixed;
             top: 0;
@@ -58,7 +74,7 @@
             align-items: center;
             z-index: 9999;
         }
-        
+
         .loader {
             display: flex;
             gap: 0.6rem;
@@ -713,6 +729,7 @@
             width: 30%;
             /* Adjust width so multiple slides fit in a single row */
         }
+
         .zero-two-bg {
             position: absolute;
             object-fit: cover;
@@ -739,55 +756,55 @@
           margin-top: 0.5rem;
           opacity: 0;
           animation: loaderfadeinout 2s ease-in-out forwards;"></div>
-      
-        <script>
-          const messages = [
-            { main: "We're getting things ready for you", sub: "" },
-            { main: "This might take a few seconds", sub: "Don't close this page" }
-          ];
-      
-          let current = 0;
-          const mainText = document.getElementById("mainText");
-          const subText = document.getElementById("subText");
-      
-          function showNextMessage() {
-            const { main, sub } = messages[current];
-      
-            // Reset animation
-            mainText.style.opacity = 0;
-            subText.style.opacity = 0;
-      
-            // Delay before changing
-            setTimeout(() => {
-              mainText.textContent = main;
-              subText.textContent = sub;
-      
-              // Re-trigger animation
-              mainText.style.animation = "none";
-              subText.style.animation = "none";
-      
-              // Force reflow
-              void mainText.offsetWidth;
-              
-              mainText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
-              subText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
 
-              if (current === 1) {
-                mainText.style.animation = "loaderfade 2s ease-in-out forwards";
-                subText.style.animation = "loaderfade 2s ease-in-out forwards";
-              }
-      
-              current = current + 1;
-              if (current >= messages.length) {
-                return;
-              }
-      
-              // Show next message after a delay
-              setTimeout(showNextMessage, 2000);
-            }, 500);
-          }
-      
-          setTimeout(showNextMessage, 1000);
+        <script>
+            const messages = [
+                { main: "We're getting things ready for you", sub: "" },
+                { main: "This might take a few seconds", sub: "Don't close this page" }
+            ];
+
+            let current = 0;
+            const mainText = document.getElementById("mainText");
+            const subText = document.getElementById("subText");
+
+            function showNextMessage() {
+                const { main, sub } = messages[current];
+
+                // Reset animation
+                mainText.style.opacity = 0;
+                subText.style.opacity = 0;
+
+                // Delay before changing
+                setTimeout(() => {
+                    mainText.textContent = main;
+                    subText.textContent = sub;
+
+                    // Re-trigger animation
+                    mainText.style.animation = "none";
+                    subText.style.animation = "none";
+
+                    // Force reflow
+                    void mainText.offsetWidth;
+
+                    mainText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
+                    subText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
+
+                    if (current === 1) {
+                        mainText.style.animation = "loaderfade 2s ease-in-out forwards";
+                        subText.style.animation = "loaderfade 2s ease-in-out forwards";
+                    }
+
+                    current = current + 1;
+                    if (current >= messages.length) {
+                        return;
+                    }
+
+                    // Show next message after a delay
+                    setTimeout(showNextMessage, 2000);
+                }, 500);
+            }
+
+            setTimeout(showNextMessage, 1000);
         </script>
     </div>
 
@@ -904,7 +921,8 @@
                                 Jason
                             </h1>
                             <p class="text-gray-400 text-lg leading-relaxed mt-6 fade-in">
-                                Hobbyist full-stack developer with passion, building mostly backend systems and APIs. Obsessed with Zero Two.
+                                Hobbyist full-stack developer with passion, building mostly backend systems and APIs.
+                                Obsessed with Zero Two.
                             </p>
                         </div>
 
@@ -968,7 +986,8 @@
                 </svg>
             </div>
             <!-- Modern Wave Divider -->
-            <div class="absolute top-30 left-0 w-full overflow-hidden" style="transform: translateY(-99%) rotate(180deg);">
+            <div class="absolute top-30 left-0 w-full overflow-hidden"
+                style="transform: translateY(-99%) rotate(180deg);">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"
                     class="w-full h-[160px]">
                     <path fill="#ffffff" fill-opacity="1"
@@ -1589,36 +1608,40 @@
                 document.getElementById('hero-banner').style.filter = 'brightness(0.3) blur(10px)';
             }, transition_secs * 1000);
         }
-        window.addEventListener('load', () => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://api.deutscher775.de/presence/690123872674119710/banner');
-            xhr.onload = () => {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                const data = JSON.parse(xhr.responseText);
-                const bannerUrl = data.banner ? data.banner : '';
-                if (cached_banner != bannerUrl) {
-                    localStorage.setItem('banner_url', bannerUrl);
-                    document.getElementById('hero-banner').src = bannerUrl;
-                }
-                const transition_secs = 0.2;
-                setTimeout(() => {
-                    document.getElementById('hero-banner').style.opacity = 1;
-                    document.getElementById('hero-banner').style.filter = 'brightness(0.3) blur(10px)';
-                }, transition_secs * 1000);
-            } else {
-                console.error('Request failed with status:', xhr.status);
-            }
-            };
-            xhr.onerror = () => {
-            console.error('Request failed');
-            };
-            xhr.send();
-            // Ladebildschirm ausblenden
-            document.getElementById('loading-screen').style.animation = "animation: fadeOut 0.5s forwards;"
-            
-            // Hauptinhalt anzeigen
-            document.getElementById('main-content').style.display = 'block';
-        });
+        else {
+            fetch('https://api.deutscher775.de/presence/690123872674119710/banner')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Request failed with status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const bannerUrl = data.banner ? data.banner : '';
+                    if (cached_banner != bannerUrl) {
+                        localStorage.setItem('banner_url', bannerUrl);
+                        document.getElementById('hero-banner').src = bannerUrl;
+                    }
+                    // Ladebildschirm ausblenden
+                    document.getElementById('loading-screen').style.animation = "fadeOut 0.5s forwards";
+
+                    // Hauptinhalt anzeigen
+                    document.getElementById('main-content').style.display = 'block';
+                    const transition_secs = 0.2;
+                    setTimeout(() => {
+                        document.getElementById('hero-banner').style.opacity = 1;
+                        document.getElementById('hero-banner').style.filter = 'brightness(0.3) blur(10px)';
+                    }, transition_secs * 1000);
+                })
+                .catch(error => {
+                    console.error('Request failed:', error);
+                    // Ladebildschirm ausblenden
+                    document.getElementById('loading-screen').style.animation = "animation: fadeOut 0.5s forwards;"
+
+                    // Hauptinhalt anzeigen
+                    document.getElementById('main-content').style.display = 'block';
+                });
+        }
     </script>
 </body>
 
