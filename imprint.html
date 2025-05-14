@@ -1,52 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum</title>
+    <title>Impressum - Jasooon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#fc7ea2',
+                        secondary: '#ffbace',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #03012C;
+            color: #ffffff;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+
+        .imprint-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        a {
+            color: #fc7ea2;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #ffbace;
+        }
+
+        .bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+            object-position: 70% center;
+            filter: contrast(2) saturate(1.2) brightness(1.2);
+        }
+
+        @media screen and (max-width: 1700px) {
+            .bgimg {
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                filter: contrast(2) saturate(1.2) brightness(1.2);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .bgimg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                z-index: -1;
+                filter: contrast(2) saturate(1.2) brightness(1.2);
+            }
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-color: #011522;
-        color: #fff;
-        font-size: 20px;
-    }
-    .imprint {
-        margin: 0 auto;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        text-align: center;
-        align-items: center;
-    }
-    a {
-        color: #ff9932;
-    }
-    a:hover {
-        color: #eeb47a;
-    }
-    h1{
-        margin-bottom: 20px;
-    }
-    h2{
-        margin-bottom: 5px;
-    }
-</style>
+
 <body>
-    <div class="imprint">
-        <h1>Impressum</h1>
+    <!-- Background Image -->
+    <img src="assets/zero_two_rose.png" alt="Background" class="bgimg">
 
-        Angaben gemäß § 5 TMG <br><br>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="nav-menu px-4 py-3 mx-auto transition-all duration-300 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-300 to-indigo-200 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    Jasooon
+                </a>
 
-        Jason Herrmann <br>
-        Feldstraße 9 <br>
-        39435 Egeln-Nord, Deutschland <br><br>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="imprint.html" class="nav-link">Imprint</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <h2>Vertreten durch</h2>
-        Jason Herrmann <br><br>
+    <!-- Imprint Section -->
+    <section class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="imprint-container">
+                <h1 class="text-4xl font-bold text-center mb-8">Impressum</h1>
+                <p class="mb-4">
+                    Angaben gemäß § 5 TMG
+                </p>
+                <p class="mb-4">
+                    <strong>Jason Herrmann</strong><br>
+                    Feldstraße 9<br>
+                    39435 Egeln-Nord,<br> 
+                    Deutschland
+                </p>
+                <h2 class="text-2xl font-bold mb-4">Vertreten durch</h2>
+                <p class="mb-4">Jason Herrmann</p>
+                <h2 class="text-2xl font-bold mb-4">Kontakt</h2>
+                <p class="mb-4">
+                    Telefon: <a href="tel:+4915901147061">+49 159 01147061</a><br>
+                    E-Mail: <a href="mailto:mail@deutscher775.de">mail@deutscher775.de</a>
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <h2>Kontakt</h2>
-        Telefon: <a href="tel:+4915901147061">+49 159 01147061</a><br>
-        E-Mail: <a href="mailto:mail@deutscher775.de">mail@deutscher775.de</a>
-    </div>
-    
+    <!-- Footer -->
+    <footer class="text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
+                    <div class="flex space-x-6 justify-center md:justify-start">
+                        <a href="https://github.com/deutscher775" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://tiktok.com/deutscher775" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://discordapp.com/users/690123872674119710" class="hover:scale-105 transition-transform duration-300 text-3xl">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-200">&copy;
+                        <script>document.write(new Date().getFullYear())</script> deutscher775.de - All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
