@@ -66,6 +66,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
+            overflow-x: hidden;
         }
 
         #loading-screen {
@@ -909,7 +910,7 @@
 
         <!-- Hero Section -->
         <section id="hero"
-            class="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#03012C] md:pt-0">
+            class="relative @h-[100vh] flex items-center justify-center overflow-hidden bg-[#03012C] md:pt-0">
             <img id="hero-banner" src="" alt=""
                 class="w-full h-full object-cover absolute top-0 left-0 z-0 filter blur-[10px] brightness-50 transition-opacity duration-500 ease-in-out"
                 style="opacity: 0; filter: brightness(0)">
