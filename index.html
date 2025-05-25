@@ -61,6 +61,13 @@
             }
         }
 
+        body {
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
         #loading-screen {
             position: fixed;
             top: 0;
@@ -114,7 +121,7 @@
 
         .gradient-border {
             position: relative;
-            background: linear-gradient(to right, #3B82F6, #60A5FA);
+            background: #ff93b2;
             padding: 1px;
             border-radius: 9999px;
         }
@@ -245,7 +252,7 @@
             left: 0;
             width: 60%;
             height: 4px;
-            background: linear-gradient(90deg, #3B82F6, transparent);
+            background: linear-gradient(90deg, #ff93b2 60%, transparent);
             border-radius: 2px;
         }
 
@@ -497,7 +504,7 @@
         }
 
         .glass-card-dark {
-            background: #29265e;
+            background: #af294f;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
@@ -826,7 +833,7 @@
                 <div class="container mx-auto flex justify-between items-center">
                     <!-- Logo -->
                     <a href="#"
-                        class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-600 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                        class="text-2xl font-bold bg-[#ffbace] text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
                     </a>
 
                     <!-- Desktop Menu -->
@@ -917,7 +924,7 @@
                     <div class="lg:w-1/2 space-y-8 stagger-fade-in">
                         <div class="space-y-4">
                             <h1
-                                class="header-name text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-indigo-600 text-transparent bg-clip-text leading-tight py-5 hover:scale-105 transition-transform duration-300">
+                                class="header-name text-4xl sm:text-5xl lg:text-7xl font-bold bg-[#ffbace] text-transparent bg-clip-text leading-tight py-5 hover:scale-105 transition-transform duration-300">
                                 Jason
                             </h1>
                             <p class="text-gray-400 text-lg leading-relaxed mt-6 fade-in">
@@ -1155,22 +1162,22 @@
                     </div>
                     <div class="flex justify-center gap-4 mb-8">
                         <button
-                            class="filter-btn px-6 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all"
+                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
                             data-filter="all">
                             All
                         </button>
                         <button
-                            class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white transition-all"
+                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
                             data-filter="api">
                             API
                         </button>
                         <button
-                            class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white transition-all"
+                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
                             data-filter="app">
                             App
                         </button>
                         <button
-                            class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white transition-all"
+                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
                             data-filter="other">
                             Other
                         </button>
@@ -1396,9 +1403,10 @@
                     </script>
                 </div>
             </section>
+        </section>
 
             <!-- Footer -->
-            <footer class="bg-secondary text-white py-12">
+            <footer class="bg-[#fc628f] text-white py-12">
                 <div class="container mx-auto px-4">
                     <div class="flex flex-col md:flex-row justify-between items-center">
                         <div class="text-center md:text-left mb-8 md:mb-0">
@@ -1564,7 +1572,7 @@
                             filterButtons.forEach(btn => {
                                 if (btn === button) {
                                     btn.classList.remove('bg-gray-200', 'text-gray-700');
-                                    btn.classList.add('bg-blue-500', 'text-white');
+                                    btn.classList.add('bg-[#ff93b2]', 'text-white');
                                 } else {
                                     btn.classList.remove('bg-blue-500', 'text-white');
                                     btn.classList.add('bg-gray-200', 'text-gray-700');
