@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -457,4 +458,465 @@
     </footer>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - Jason</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0F0C29 0%, #24243e 50%, #302b63 100%);
+            color: #ffffff;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #fc7ea2, #ffbace);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        .nav-link:hover {
+            color: #fc7ea2;
+        }
+
+        .bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+            object-position: 70% center;
+            filter: contrast(2) saturate(1.2) brightness(0.3);
+        }
+
+        .imprint-container {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        a {
+            color: #fc7ea2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffbace;
+        }
+
+        .animated-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 384px;
+            height: 384px;
+            background: rgba(252, 126, 162, 0.1);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 25%;
+            right: 25%;
+            width: 320px;
+            height: 320px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulse 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Image -->
+    <img src="assets/zero_two_rose.png" alt="Background" class="bgimg">
+    
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="nav-menu px-6 py-4 mx-auto transition-all duration-300 backdrop-blur-xl bg-white/10 border-b border-white/10">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <a href="/" class="text-3xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    Jason
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="/#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        About
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="/#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="./contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Contact
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="mobile-menu-icon" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden transition-all duration-300 mt-4">
+                <div class="flex flex-col space-y-4 py-4 px-4 bg-black/20 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <a href="/" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Home</a>
+                    <a href="/#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">About</a>
+                    <a href="/#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Projects</a>
+                    <a href="./contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('.mobile-menu-icon');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.querySelector('.mobile-menu-icon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                }
+            });
+        });
+    </script>
+
+    <!-- Imprint Section -->
+    <section class="relative min-h-screen py-32">
+        <div class="relative container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h1 class="text-6xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-6">
+                    Impressum
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
+                <p class="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed">
+                    Legal information according to German law
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="imprint-container rounded-3xl p-8 shadow-2xl">
+                    <!-- Legal Notice -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-info text-white text-sm"></i>
+                            </div>
+                            Angaben gemäß § 5 TMG
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <div class="space-y-2">
+                                <p class="text-white font-semibold text-lg">Jason Herrmann</p>
+                                <p class="text-gray-300">Feldstraße 9</p>
+                                <p class="text-gray-300">39435 Egeln-Nord</p>
+                                <p class="text-gray-300">Deutschland</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Represented by -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user text-white text-sm"></i>
+                            </div>
+                            Vertreten durch
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <p class="text-gray-300">Jason Herrmann</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-address-book text-white text-sm"></i>
+                            </div>
+                            Kontakt
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <p class="text-gray-400 text-sm font-medium mb-1">Telefon</p>
+                                    <a href="tel:+4915901147061" class="text-green-400 hover:text-green-300 transition-colors font-medium">
+                                        +49 159 01147061
+                                    </a>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm font-medium mb-1">E-Mail</p>
+                                    <a href="mailto:jason@jesn.zip" class="text-pink-400 hover:text-pink-300 transition-colors font-medium">
+                                        jason@jesn.zip
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Responsibility -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-edit text-white text-sm"></i>
+                            </div>
+                            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <div class="space-y-2">
+                                <p class="text-white font-semibold">Jason Herrmann</p>
+                                <p class="text-gray-300">Feldstraße 9</p>
+                                <p class="text-gray-300">39435 Egeln-Nord</p>
+                                <p class="text-gray-300">Deutschland</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EU Dispute Resolution -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-balance-scale text-white text-sm"></i>
+                            </div>
+                            EU-Streitschlichtung
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                            </p>
+                            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" 
+                               class="text-pink-400 hover:text-pink-300 transition-colors text-sm">
+                                https://ec.europa.eu/consumers/odr/
+                            </a>
+                            <p class="text-gray-300 text-sm leading-relaxed mt-3">
+                                Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Liability Disclaimer -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-shield-alt text-white text-sm"></i>
+                            </div>
+                            Haftungsausschluss
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10 space-y-4">
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Haftung für Inhalte</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-2">Haftung für Links</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-copyright text-white text-sm"></i>
+                            </div>
+                            Urheberrecht
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed mt-3">
+                               Genutzte Bilder, Logos und Grafiken unterliegen dem Urheberrecht der jeweiligen Rechteinhaber. Diese sind <a class="text-pink-400 hover:underline" href="./sources">hier</a> einsehbar.
+                        </div>
+                    </div>
+
+                    <!-- Privacy Notice -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                            <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-user-shield text-white text-sm"></i>
+                            </div>
+                            Datenschutz
+                        </h2>
+                        <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                            <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis.
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mr-3 mt-1">
+                                <i class="fas fa-info-circle text-white text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Hinweis zur Website</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                    Diese Website dient ausschließlich zu Informationszwecken und zur Präsentation meiner Projekte. 
+                                    Es handelt sich um eine private, nicht-kommerzielle Website.
+                                </p>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    <strong>Letzte Aktualisierung:</strong> <script>document.write(new Date().toLocaleDateString('de-DE'))</script>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative text-white py-20 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative container mx-auto px-4">
+            <div class="text-center">
+                <!-- Logo/Brand -->
+                <div class="mb-12">
+                    <h3 class="text-4xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-4">
+                        Jason
+                    </h3>
+                    <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                        Building the future, one line of code at a time
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-8 mb-12">
+                    <a href="https://github.com/Deutscher775" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-pink-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.com/users/690123872674119710" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-purple-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/deutscher775" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-indigo-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="pt-8 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div class="text-center md:text-left">
+                            <p class="text-gray-400 text-sm mb-2">
+                                © <script>document.write(new Date().getFullYear())</script> Jason. Made with 💖 and lots of Zero Two inspiration
+                            </p>
+                            <p class="text-gray-500 text-xs max-w-md mx-auto md:mx-0">
+                                The character "Zero Two" is from the anime "Darling in the FranXX" produced by CloverWorks.
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <a href="./contact" class="text-gray-400 hover:text-pink-400 transition-colors text-sm">Contact</a>
+                            <span class="text-gray-600">•</span>
+                            <a href="/" class="text-gray-400 hover:text-pink-400 transition-colors text-sm">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+>>>>>>> 76e8cfcb5d3fca43d5e58ce75a63ed519f472c0c
 </html>
