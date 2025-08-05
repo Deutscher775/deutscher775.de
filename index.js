@@ -65,36 +65,70 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- Dropdown & Card Logic ---
-function toggleDropdown() {
-    document.getElementById("dropdownOptions").classList.toggle("hidden");
-}
-function selectOption(label, value) {
-    document.getElementById("dropdownSelected").textContent = label;
-    toggleDropdown();
-    const selector = document.getElementById('cardSelector');
-    selector.value = value;
-    selector.dispatchEvent(new Event('change'));
-    const cards = document.querySelectorAll('.card-popup');
-    cards.forEach(card => {
-        card.classList.add('scale-95', 'opacity-0');
-    });
-    if (value) {
-        const card = document.getElementById(value);
-        if (card) {
-            card.classList.remove('hidden');
-            setTimeout(() => {
-                card.classList.remove('scale-95', 'opacity-0');
-                card.classList.add('scale-100', 'opacity-100');
-            }, 10);
+document.addEventListener('DOMContentLoaded', function() {
+    function toggleDropdown() {
+        const dropdownOptions = document.getElementById("dropdownOptions");
+        if (dropdownOptions) {
+            dropdownOptions.classList.toggle("hidden");
         }
     }
-}
-window.addEventListener('click', function (e) {
-    const button = document.getElementById('dropdownButton');
-    const options = document.getElementById('dropdownOptions');
-    if (button && !button.contains(e.target)) {
-        options.classList.add('hidden');
+
+    function selectOption(label, value) {
+        const dropdownSelected = document.getElementById("dropdownSelected");
+        if (dropdownSelected) {
+            dropdownSelected.textContent = label;
+        }
+        toggleDropdown();
+        const selector = document.getElementById('cardSelector');
+        if (selector) {
+            selector.value = value;
+            selector.dispatchEvent(new Event('change'));
+        }
+        const cards = document.querySelectorAll('.card-popup');
+        cards.forEach(card => {
+            card.classList.add('scale-95', 'opacity-0');
+        });
+        if (value) {
+            const card = document.getElementById(value);
+            if (card) {
+                card.classList.remove('hidden');
+                setTimeout(() => {
+                    card.classList.remove('scale-95', 'opacity-0');
+                    card.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+        }
     }
+
+    // Set up dropdown button click handler
+    const dropdownButton = document.getElementById('dropdownButton');
+    if (dropdownButton) {
+        dropdownButton.addEventListener('click', toggleDropdown);
+    }
+
+    // Set up dropdown option click handlers
+    const zerotwoOption = document.querySelector('[data-option="zerotwo"]');
+    if (zerotwoOption) {
+        zerotwoOption.addEventListener('click', function() {
+            selectOption('Zero Two', 'zerotwo');
+        });
+    }
+
+    const astroidOption = document.querySelector('[data-option="astroid"]');
+    if (astroidOption) {
+        astroidOption.addEventListener('click', function() {
+            selectOption('Astroid', 'astroid');
+        });
+    }
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function (e) {
+        const button = document.getElementById('dropdownButton');
+        const options = document.getElementById('dropdownOptions');
+        if (button && options && !button.contains(e.target)) {
+            options.classList.add('hidden');
+        }
+    });
 });
 
 // --- Zero Two Bot Embed & Chat ---
@@ -483,5 +517,73 @@ if (cached_banner) {
             }
         });
 }
+// --- Loading Screen Animation (moved from HTML) ---
+// This code is already present in the file
+
+// --- Header Scroll Effect (moved from HTML) ---
+document.addEventListener('DOMContentLoaded', function() {
+    // Header Scroll Effect
+    const header = document.querySelector('nav');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                const navMenu = header.querySelector('.nav-menu');
+                if (navMenu) {
+                    navMenu.classList.add('py-2');
+                    navMenu.classList.remove('py-3');
+                }
+            } else {
+                header.classList.remove('shadow-lg');
+                const navMenu = header.querySelector('.nav-menu');
+                if (navMenu) {
+                    navMenu.classList.remove('py-2');
+                    navMenu.classList.add('py-3');
+                }
+            }
+        });
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('.mobile-menu-icon');
+            if (icon) {
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                } else {
+                    icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                }
+            }
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuButton.querySelector('.mobile-menu-icon');
+                if (icon) {
+                    icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                }
+            }
+        });
+    });
+});
+
+// --- Year in Footer (moved from HTML) ---
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current year in footer
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+});
+
 // --- ENDE ---
 

@@ -322,7 +322,6 @@
   100% {
     opacity: 1;
   }
-<<<<<<< HEAD
 }
 
 @keyframes fadeOut {
@@ -344,18 +343,6 @@
   80% { transform: translate(50vw, 50vh) scale(1.15); opacity: 0.75; }
 }
 
-=======
-}
-/* Modern Floating Particle Animations */
-@keyframes float-1 {
-  0%, 100% { transform: translate(5vw, 5vh) scale(1); opacity: 0.7; }
-  20% { transform: translate(90vw, 10vh) scale(1.1); opacity: 0.8; }
-  40% { transform: translate(80vw, 80vh) scale(1.2); opacity: 0.6; }
-  60% { transform: translate(10vw, 90vh) scale(1.05); opacity: 0.7; }
-  80% { transform: translate(50vw, 50vh) scale(1.15); opacity: 0.75; }
-}
-
->>>>>>> 76e8cfcb5d3fca43d5e58ce75a63ed519f472c0c
 @keyframes float-2 {
   0%, 100% { transform: translate(95vw, 10vh) scale(1); opacity: 0.6; }
   25% { transform: translate(90vw, 90vh) scale(1.1); opacity: 0.8; }

@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class=" overflow-overlay">
+<body class="bg-gray-900 overflow-overlay">
     <div id="loading-screen">
         <div class="text" id="mainText" style="
           font-size: 1.5rem;
@@ -26,55 +26,6 @@
           opacity: 0;
           animation: loaderfadeinout 2s ease-in-out forwards;"></div>
 
-        <script>
-            const messages = [
-                { main: "We're getting things ready for you", sub: "" },
-                { main: "This might take a few seconds", sub: "Don't close this page" }
-            ];
-
-            let current = 0;
-            const mainText = document.getElementById("mainText");
-            const subText = document.getElementById("subText");
-
-            function showNextMessage() {
-                const { main, sub } = messages[current];
-
-                // Reset animation
-                mainText.style.opacity = 0;
-                subText.style.opacity = 0;
-
-                // Delay before changing
-                setTimeout(() => {
-                    mainText.textContent = main;
-                    subText.textContent = sub;
-
-                    // Re-trigger animation
-                    mainText.style.animation = "none";
-                    subText.style.animation = "none";
-
-                    // Force reflow
-                    void mainText.offsetWidth;
-
-                    mainText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
-                    subText.style.animation = "loaderfadeinout 2s ease-in-out forwards";
-
-                    if (current === 1) {
-                        mainText.style.animation = "loaderfade 2s ease-in-out forwards";
-                        subText.style.animation = "loaderfade 2s ease-in-out forwards";
-                    }
-
-                    current = current + 1;
-                    if (current >= messages.length) {
-                        return;
-                    }
-
-                    // Show next message after a delay
-                    setTimeout(showNextMessage, 2000);
-                }, 500);
-            }
-
-            setTimeout(showNextMessage, 1000);
-        </script>
     </div>
 
     <div id="main-content" style="display: none;">
@@ -930,11 +881,40 @@
 
                 <!-- Floating Tech Icons -->
                 <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div class="absolute top-20 left-20 text-4xl opacity-10 animate-float-1">⚡</div>
-                    <div class="absolute top-40 right-32 text-3xl opacity-10 animate-float-2">🚀</div>
-                    <div class="absolute bottom-32 left-1/4 text-5xl opacity-10 animate-float-3">💻</div>
-                    <div class="absolute bottom-20 right-20 text-3xl opacity-10 animate-float-4">🔧</div>
+                    <div class="floater absolute text-4xl opacity-50">⚡</div>
+                    <div class="floater absolute text-3xl opacity-50">🚀</div>
+                    <div class="floater absolute text-5xl opacity-50">💻</div>
+                    <div class="floater absolute text-3xl opacity-50">🔧</div>
+                    <div class="floater absolute text-4xl opacity-50"><img src="https://cdn.discordapp.com/emojis/1075117090203250848.webp?size=48" alt=""></div>
+                    <div class="floater absolute text-3xl opacity-50"><img src="https://cdn.discordapp.com/emojis/1402295229024964700.webp?size=48" alt=""></div>
                 </div>
+
+                <script>
+                    // Random floating animation for tech icons with smooth transitions
+                    function randomFloat(el) {
+                        const vw = window.innerWidth;
+                        const vh = window.innerHeight;
+                        const x = Math.random() * (vw - 80);
+                        const y = Math.random() * (vh - 200) + 100;
+                        const rotation = Math.random() * 360;
+                        
+                        el.style.left = x + "px";
+                        el.style.top = y + "px";
+                        el.style.transform = `rotate(${rotation}deg)`;
+                        el.style.transition = "left 10s ease-in-out, top 10s ease-in-out, transform 10s ease-in-out";
+                    }
+
+                    function animateFloaters() {
+                        document.querySelectorAll('.floater').forEach((el, index) => {
+                            setTimeout(() => {
+                                randomFloat(el);
+                            }, index * 2000);
+                        });
+                    }
+                    animateFloaters();
+                    setInterval(animateFloaters, 10000);
+                    window.onresize = animateFloaters;
+                </script>
 
                 <div class="relative container mx-auto px-4">
                     <div class="text-center mb-20">
@@ -1046,7 +1026,7 @@
                         </h2>
                         <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
                         <p class="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
-                            Discover the innovative solutions I've crafted with passion, creativity, and cutting-edge technology
+                            Discover my latest projects and contributions
                         </p>
                     </div>
                     
@@ -1558,6 +1538,7 @@
                             <ul class="space-y-2">
                                 <li><a href="./imprint" class="text-gray-300 hover:text-indigo-400 transition-colors">Imprint</a></li>
                                 <li><a href="./contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a></li>
+                                <li><a href="./sources" class="text-gray-300 hover:text-indigo-400 transition-colors">Sources</a></li>
                             </ul>
                         </div>
                         <div>
@@ -1652,28 +1633,6 @@
                     el.classList.add('animate-on-scroll');
                     observer.observe(el);
                 });
-            });
-
-            // Enhanced loading screen
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(() => {
-                    const loadingScreen = document.getElementById('loading-screen');
-                    const mainContent = document.getElementById('main-content');
-                    
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transform = 'scale(1.1)';
-                    
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        mainContent.style.display = 'block';
-                        mainContent.style.opacity = '0';
-                        
-                        setTimeout(() => {
-                            mainContent.style.transition = 'opacity 0.8s ease-in-out';
-                            mainContent.style.opacity = '1';
-                        }, 100);
-                    }, 500);
-                }, 3000);
             });
 
             // Parallax effect for background elements
