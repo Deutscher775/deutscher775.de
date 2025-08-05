@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -823,43 +822,57 @@
                 </svg>
             </div>
 
-            <!-- About Content with more spacing -->
-            <img class="zero-two-bg" src="assets/zero_two_bg.png" alt="">
-            <div class="about-content container mx-auto px-4 pt-16">
-                <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2">
-                        <iframe src="https://api.deutscher775.de/presence/690123872674119710?width=430" frameborder="0"
-                            class="w-[450px] h-[170px]"></iframe>
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-pink-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-3xl"></div>
+            </div>
+
+            <img class="absolute inset-0 w-full h-full object-cover opacity-5" src="assets/zero_two_bg.png" alt="">
+            
+            <div class="relative container mx-auto px-4">
+                <div class="text-center mb-20">
+                    <h2 class="text-6xl font-black text-transparent bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text mb-6">
+                        About Me
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <!-- Discord Presence Card -->
+                    <div class="lg:w-1/2 relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                        <div class="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-2xl transform group-hover:scale-105 transition-all duration-300">
+                            <iframe src="https://api.deutscher775.de/presence/690123872674119710?width=430" frameborder="0"
+                                class="w-full h-[170px] rounded-2xl overflow-hidden"></iframe>
+                        </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <p class="text-gray-900 mb-6">
-                            I'm an 18 year old hobbyist full-stack developer from Germany. I have a passion for building
-                            backend systems and APIs. I'm currently working on a project called Astroid, a simple to use
-                            multi-platform bridge that connect various platforms like Discord, Nerimity and Guilded
-                            together. <br>
-                            I'm obsessed with Zero Two, she just cute af.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>API Development</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Backend Development</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Database management</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Project management</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>System administration</span>
+                    
+                    <!-- Content -->
+                    <div class="lg:w-1/2 space-y-8">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-gray-700 text-xl leading-relaxed mb-8">
+                                I'm an <span class="font-bold text-transparent bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text">18-year-old</span> passionate developer from Germany. 
+                                I specialize in building backend systems and creating innovative APIs that power modern applications.
+                            </p>
+                            <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                                Currently working on <span class="font-semibold text-purple-600">Astroid</span> — a revolutionary multi-platform bridge 
+                                connecting Discord, Nerimity, and Guilded. Also deeply obsessed with Zero Two because she's absolutely adorable! 💖
+                            </p>
+                        </div>
+                        
+                        <!-- Skills Grid -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="skill-item group">
+                                <div class="flex items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-code text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">API Development</h4>
+                                        <p class="text-gray-600 text-sm">RESTful APIs</p>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="skill-item group">
@@ -921,8 +934,6 @@
                     <div class="absolute top-40 right-32 text-3xl opacity-10 animate-float-2">🚀</div>
                     <div class="absolute bottom-32 left-1/4 text-5xl opacity-10 animate-float-3">💻</div>
                     <div class="absolute bottom-20 right-20 text-3xl opacity-10 animate-float-4">🔧</div>
-                    <div class="absolute top-1/4 right-1/4 text-4xl opacity-10 animate-float-5"><img src="https://cdn.discordapp.com/emojis/1402295229024964700.webp?size=48" alt=""></div>
-                    <div class="absolute top-1/2 left-1/4 text-3xl opacity-10 animate-float-6"><img src="https://cdn.discordapp.com/emojis/1075117090203250848.webp?size=48" alt=""></div>
                 </div>
 
                 <div class="relative container mx-auto px-4">
@@ -1035,7 +1046,7 @@
                         </h2>
                         <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
                         <p class="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
-                            Discover my latest projects or contributions
+                            Discover the innovative solutions I've crafted with passion, creativity, and cutting-edge technology
                         </p>
                     </div>
                     
@@ -1076,7 +1087,7 @@
                             <div class="p-8">
                                 <div class="flex items-center justify-between mb-4">
                                     <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all duration-300">
-                                        Astroid
+                                        Astroid Platform
                                     </h3>
                                     <div class="flex items-center gap-2">
                                         <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
@@ -1750,4 +1761,3 @@
 
 </body>
 </html>
-`
