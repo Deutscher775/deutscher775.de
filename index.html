@@ -5,759 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasooon</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#B33C86',
-                        secondary: '#B33C86',
-                    },
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style>
-        @keyframes loaderfadeinout {
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes loaderfade {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-                display: none;
-            }
-        }
-
-        body {
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow-x: hidden;
-        }
-
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .loader {
-            display: flex;
-            gap: 0.6rem;
-            margin-bottom: 2rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ffffff;
-            opacity: 0.3;
-            animation: bounce 1.2s infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-                opacity: 0.3;
-            }
-
-            50% {
-                transform: translateY(-10px);
-                opacity: 1;
-            }
-        }
-
-        .gradient-border {
-            position: relative;
-            background: #ff93b2;
-            padding: 1px;
-            border-radius: 9999px;
-        }
-
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 9999px;
-            padding: 2px;
-            background: linear-gradient(45deg, #3B82F6, #60A5FA, #93C5FD);
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow:
-                0 8px 32px 0 rgba(31, 38, 135, 0.1),
-                0 4px 8px rgba(0, 0, 0, 0.05);
-            transform-style: preserve-3d;
-            transition: all 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
-            box-shadow:
-                0 12px 40px 0 rgba(31, 38, 135, 0.15),
-                0 8px 16px rgba(0, 0, 0, 0.07);
-        }
-
-        .skill-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px) rotateX(10deg);
-            box-shadow:
-                0 20px 40px -15px rgba(59, 130, 246, 0.3),
-                0 10px 20px -10px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-icon {
-            transition: all 0.4s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: translateZ(20px) scale(1.1);
-            color: #3B82F6;
-        }
-
-        .progress-bar {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.4) 50%,
-                    rgba(255, 255, 255, 0) 100%);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-
-        .btn-primary {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            z-index: 1;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #3B82F6, #60A5FA);
-            z-index: -1;
-            transition: all 0.4s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.5);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(120deg, #ff93b2, transparent);
-            border-radius: 2px;
-        }
-
-        input,
-        textarea {
-            transition: all 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus {
-            transform: translateY(-2px);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .float-animation {
-            animation: float 60s ease-in-out infinite;
-        }
-
-        /* Add smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Animation for project cards */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        /* Custom cursor styles */
-        .cursor-dot,
-        .cursor-dot-outline {
-            pointer-events: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            z-index: 9999;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #3b82f6;
-        }
-
-        .cursor-dot-outline {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(59, 130, 246, 0.1);
-            border: 2px solid rgba(59, 130, 246, 0.5);
-        }
-
-        /* Hide cursor on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-
-            .cursor-dot,
-            .cursor-dot-outline {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .header-name {
-                margin-top: 80px;
-                margin-left: 10px;
-            }
-
-            .code-editor {
-                margin-bottom: 120px;
-            }
-
-            .about-content {
-                margin-top: -40px;
-            }
-        }
-
-        /* Wave Transition Styles */
-        .wave-transition {
-            --tw-gradient-to: #fff var(--tw-gradient-to-position);
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
-        }
-
-        .wave-transition.flip {
-            transform: rotate(0);
-        }
-
-        .wave-transition svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 150px;
-        }
-
-        .wave-transition .shape-fill {
-            fill: #ffffff;
-        }
-
-        /* Adjust section positioning */
-        section {
-            position: relative;
-            z-index: 1;
-        }
-
-        #projects {
-            margin-top: -1px;
-            background-color: #ffffff;
-        }
-
-        #contact {
-            margin-top: -1px;
-            background-color: rgb(249 250 251);
-        }
-
-        /* Add subtle animation to waves */
-        @keyframes wave {
-            0% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(-25px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .wave-transition svg path {
-            animation: wave 8s ease-in-out infinite;
-        }
-
-        .wave-transition.flip svg path {
-            animation: wave 8s ease-in-out infinite reverse;
-        }
-
-        /* Background Effects */
-        .bg-blur-effect {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            mix-blend-mode: multiply;
-            pointer-events: none;
-            transition: all 0.8s ease;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .bg-blur-effect.primary {
-            background: rgb(59, 130, 246);
-            width: 400px;
-            height: 400px;
-        }
-
-        .bg-blur-effect.secondary {
-            background: rgb(139, 92, 246);
-            width: 350px;
-            height: 350px;
-            animation-delay: -2s;
-        }
-
-        .bg-blur-effect.accent {
-            background: rgb(236, 72, 153);
-            width: 300px;
-            height: 300px;
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            25% {
-                transform: translate(50px, -50px) scale(1.1);
-            }
-
-            50% {
-                transform: translate(-30px, 30px) scale(0.9);
-            }
-
-            75% {
-                transform: translate(40px, 40px) scale(1.05);
-            }
-        }
-
-        /* Section Styles */
-        .section-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Card Hover Effects */
-        .hover-card {
-            transition: all 0.3s ease;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-        }
-
-        .hover-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Enhanced Glass Effect */
-        .glass-card {
-            background: rgba(221, 229, 252, 0.884);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        }
-
-        .glass-card-dark {
-            background: #af294f;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        }
-
-
-        /* Enhanced Animations */
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes slideInFromBottom {
-            0% {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Enhanced Background Effects */
-        .animated-gradient {
-            background: linear-gradient(-45deg, #3b82f6, #2563eb, #1d4ed8, #1e40af);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        }
-
-        /* Enhanced Button Styles */
-        .btn-hover-effect {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .btn-hover-effect:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
-
-        .btn-hover-effect:hover:before {
-            transform: translateX(100%);
-        }
-
-        /* Width */
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Enhanced Code Editor */
-        .code-editor {
-            position: relative;
-            border-radius: 1rem;
-            background-color: #17090e;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .code-editor:before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background-color: #17090e;
-            border-radius: 1.1rem;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* Animated Elements */
-        .fade-in {
-            animation: slideInFromBottom 0.6s ease-out forwards;
-        }
-
-        .stagger-fade-in>* {
-            opacity: 0;
-            animation: slideInFromBottom 0.6s ease-out forwards;
-        }
-
-        .stagger-fade-in>*:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .stagger-fade-in>*:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .stagger-fade-in>*:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .stagger-fade-in>*:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        /* Header Menu Styles */
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(90deg, #3b82f6, #2563eb);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .nav-link:hover::after {
-            width: 70%;
-        }
-
-        .nav-link:hover {
-            color: #3b82f6;
-        }
-
-        .nav-menu {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                background: rgba(255, 255, 255, 0.95);
-            }
-        }
-
-        /* Cursor follower */
-        .cursor-follower {
-            pointer-events: none;
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            border: 2px solid #3b82f6;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.15s ease;
-            z-index: 9999;
-            opacity: 0.7;
-        }
-
-        /* Hide on mobile/touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            .cursor-follower {
-                display: none;
-            }
-        }
-
-        /* Interactive element hover effect */
-        .cursor-follower.hover {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(59, 130, 246, 0.1);
-            border-color: #2563eb;
-        }
-
-        .swiper-wrapper {
-            display: flex;
-            flex-wrap: nowrap !important;
-            /* Prevents wrapping */
-        }
-
-        .swiper-slide {
-            flex: 0 0 auto;
-            /* Ensures each slide stays in the same row */
-            width: 30%;
-            /* Adjust width so multiple slides fit in a single row */
-        }
-
-        .zero-two-bg {
-            position: absolute;
-            object-fit: cover;
-            width: 100%;
-            height: 140%;
-            z-index: -1;
-            top: -60px;
-            filter: blur(10px) saturate(0.7);
-        }
-
-        .zero-two-showcase-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: blur(10px) saturate(0.7);
-        }
-    </style>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class=" overflow-overlay">
@@ -840,25 +92,41 @@
     -->
         <!-- Navigation -->
         <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-            <div class="nav-menu px-4 py-3 mx-auto transition-all duration-300 shadow-lg">
+            <div class="nav-menu px-6 py-4 mx-auto transition-all duration-300 backdrop-blur-xl bg-white/10 border-b border-white/10">
                 <div class="container mx-auto flex justify-between items-center">
                     <!-- Logo -->
                     <a href="#"
-                        class="text-2xl font-bold bg-[#ffbace] text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                        class="text-3xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                        Jason
                     </a>
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="#hero" class="nav-link">Home</a>
-                        <a href="#about" class="nav-link">About</a>
-                        <a href="#projects" class="nav-link">Projects</a>
-                        <a href="./contact" class="nav-link">Contact</a>
-                        <a href="./imprint" class="nav-link">Imprint</a>
+                        <a href="#hero" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                            About
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                            Projects
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="./contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                            Contact
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                        </a>
+                        <a href="./imprint" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                            Imprint
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                        </a>
                     </div>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-button" class="md:hidden flex items-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path class="mobile-menu-icon" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -866,13 +134,13 @@
                 </div>
 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="md:hidden hidden transition-all duration-300">
-                    <div class="flex flex-col space-y-4 pt-4 pb-3 px-2 transition-all duration-300">
-                        <a href="#hero" class="nav-link text-center">Home</a>
-                        <a href="#about" class="nav-link text-center">About</a>
-                        <a href="#projects" class="nav-link text-center">Projects</a>
-                        <a href="#contact" class="nav-link text-center">Contact</a>
-                        <a href="./imprint" class="nav-link text-center">Imprint</a>
+                <div id="mobile-menu" class="md:hidden hidden transition-all duration-300 mt-4">
+                    <div class="flex flex-col space-y-4 py-4 px-4 bg-black/20 rounded-2xl backdrop-blur-xl border border-white/10">
+                        <a href="#hero" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Home</a>
+                        <a href="#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">About</a>
+                        <a href="#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Projects</a>
+                        <a href="#contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Contact</a>
+                        <a href="./imprint" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Imprint</a>
                     </div>
                 </div>
             </div>
@@ -920,7 +188,23 @@
 
         <!-- Hero Section -->
         <section id="hero"
-            class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-[#03012C] md:pt-0">
+            class="relative h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0F0C29] via-[#24243e] to-[#302b63] md:pt-0">
+            
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+            </div>
+
+            <!-- Floating Particles -->
+            <div class="absolute inset-0 z-1">
+                <div class="particle w-2 h-2 bg-pink-400/60 rounded-full absolute animate-float-1"></div>
+                <div class="particle w-1 h-1 bg-purple-400/60 rounded-full absolute animate-float-2"></div>
+                <div class="particle w-3 h-3 bg-blue-400/60 rounded-full absolute animate-float-3"></div>
+                <div class="particle w-1.5 h-1.5 bg-indigo-400/60 rounded-full absolute animate-float-4"></div>
+            </div>
+
             <img id="hero-banner" src="" alt=""
                 class="w-full h-full object-cover absolute top-0 left-0 z-0 filter blur-[10px] brightness-50 transition-opacity duration-500 ease-in-out"
                 style="opacity: 0; filter: brightness(0)">
@@ -930,59 +214,85 @@
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
                     <!-- Left Content -->
                     <div class="lg:w-1/2 space-y-8 stagger-fade-in">
-                        <div class="space-y-4">
+                        <div class="space-y-6">
                             <h1
-                                class="header-name text-4xl sm:text-5xl lg:text-7xl font-bold bg-[#ffbace] text-transparent bg-clip-text leading-tight py-5 hover:scale-105 transition-transform duration-300">
+                                class="header-name text-5xl sm:text-6xl lg:text-8xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text leading-tight py-2 hover:scale-105 transition-all duration-500 drop-shadow-2xl">
                                 Jason
                             </h1>
-                            <p class="text-gray-400 text-lg leading-relaxed mt-6 fade-in">
-                                Hobbyist full-stack developer with passion, building mostly backend systems and APIs.
-                                Obsessed with Zero Two.
+                            <p class="text-gray-300 text-xl leading-relaxed mt-8 fade-in max-w-lg">
+                                Passionate hobby <span class="text-pink-400 font-semibold">full-stack developer</span> crafting innovative backend systems and APIs. 
+                                <span class="text-purple-400">Zero Two enthusiast</span> 💖
                             </p>
                         </div>
 
-                        <div class="flex gap-4 pt-4">
-                            <a href="#projects" class="gradient-border inline-block btn-hover-effect"
-                                style="padding: 3px;"><span
-                                    class="btn bg-white hover:bg-gray-50 text-gray-900 px-8 py-3 rounded-full inline-block transition-all hover:shadow-lg">
+                        <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                            <a href="#projects" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 shadow-xl hover:shadow-pink-500/25">
+                                <span class="relative z-10 flex items-center">
                                     View Projects
-                                </span></a>
+                                    <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </span>
+                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                            </a>
+                            <a href="#about" class="group inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border-2 border-white/20 rounded-2xl hover:bg-white/10 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 backdrop-blur-sm">
+                                About Me
+                                <svg class="w-5 h-5 ml-2 transform group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
 
                     <!-- Right Content - Enhanced Code Preview -->
                     <div class="lg:w-1/2 w-full">
-                        <div class="code-editor p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
-                            <!-- Code Editor Header -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-3 h-3 rounded-full bg-red-500 hover:opacity-80 transition-opacity">
+                        <div class="relative">
+                            <!-- Decorative Elements -->
+                            <div class="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full opacity-20 blur-xl"></div>
+                            <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-20 blur-xl"></div>
+                            
+                            <div class="code-editor-modern p-8 rounded-3xl transition-all duration-500 backdrop-blur-xl border border-white/10 shadow-2xl">
+                                <!-- Code Editor Header -->
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-red-500 hover:opacity-80 transition-opacity shadow-lg"></div>
+                                        <div class="w-4 h-4 rounded-full bg-yellow-500 hover:opacity-80 transition-opacity shadow-lg"></div>
+                                        <div class="w-4 h-4 rounded-full bg-green-500 hover:opacity-80 transition-opacity shadow-lg"></div>
                                     </div>
-                                    <div class="w-3 h-3 rounded-full bg-yellow-500 hover:opacity-80 transition-opacity">
-                                    </div>
-                                    <div class="w-3 h-3 rounded-full bg-green-500 hover:opacity-80 transition-opacity">
+                                    <div class="text-gray-300 text-sm px-4 py-2 rounded-xl bg-black/20 backdrop-blur-sm border border-white/10">
+                                        <span class="text-pink-400">✨</span> jason.py
                                     </div>
                                 </div>
-                                <div class="text-gray-400 text-sm px-3 py-1 rounded-md bg-gray-800/50">jason.py
-                                </div>
-                            </div>
-                            <!-- Code Content -->
-                            <pre class="text-sm font-mono overflow-x-auto"><code><span class="text-blue-400">developer</span> <span class="text-gray-400">=</span> <span class="text-yellow-300">{</span>
+                                
+                                <!-- Code Content -->
+                                <pre class="text-sm font-mono overflow-x-auto leading-relaxed"><code><span class="text-blue-400 font-semibold">developer</span> <span class="text-gray-400">=</span> <span class="text-yellow-300">{</span>
     <span class="text-green-400">'name'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Jason'</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'type'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Full Stack'</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'skills'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">[</span><span class="text-orange-300">'API'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'Discord Bots'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'SurrealDB'</span><span class="text-yellow-300">]</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'passion'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Building backend applications and Discord Bots'</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'languages'</span><span class="text-gray-400">: <span class="text-yellow-300">[</span></span><span class="text-orange-300">'Python'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'Type- & JavaScript'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'SurrealQL'</span><span class="text-yellow-400">]</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'dependencies'</span><span class="text-gray-400">: <span class="text-yellow-300">[</span></span><span class="text-orange-300">'Music'</span><span class="text-gray-400">,</span> <span class="text-orange-300">'atomicradio'</span><span class="text-gray-400"><span class="text-yellow-400">]</span><span class="text-gray-400">,</span>
-    <span class="text-green-400">'code'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">lambda</span> <span class="text-gray-400">:</span> <span class="text-yellow-300">[</span>
+    <span class="text-green-400">'type'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Full Stack Developer'</span><span class="text-gray-400">,</span>
+    <span class="text-green-400">'skills'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">[</span>
+        <span class="text-orange-300">'API Development'</span><span class="text-gray-400">,</span> 
+        <span class="text-orange-300">'Discord Bots'</span><span class="text-gray-400">,</span> 
+        <span class="text-orange-300">'SurrealDB'</span><span class="text-gray-400">,</span>
+        <span class="text-orange-300">'System Architecture'</span>
+    <span class="text-yellow-300">]</span><span class="text-gray-400">,</span>
+    <span class="text-green-400">'passion'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Building backend systems and Discord bots'</span><span class="text-gray-400">,</span>
+    <span class="text-green-400">'languages'</span><span class="text-gray-400">:</span> <span class="text-yellow-300">[</span>
+        <span class="text-orange-300">'Python'</span><span class="text-gray-400">,</span> 
+        <span class="text-orange-300">'TypeScript'</span><span class="text-gray-400">,</span> 
+        <span class="text-orange-300">'JavaScript'</span><span class="text-gray-400">,</span>
+        <span class="text-orange-300">'SurrealQL/SQL'</span>
+    <span class="text-yellow-300">]</span><span class="text-gray-400">,</span>
+    <span class="text-green-400">'current_focus'</span><span class="text-gray-400">:</span> <span class="text-orange-300">'Astroid'</span><span class="text-gray-400">,</span>    
+    <span class="text-green-400">'daily_routine'</span><span class="text-gray-400">:</span> <span class="text-purple-400">lambda</span><span class="text-gray-400">:</span> <span class="text-yellow-300">[</span>
         <span class="text-purple-400">while</span> <span class="text-yellow-300">True</span><span class="text-gray-400">:</span>
-            <span class="text-blue-400">ensure_service</span><span class="text-yellow-300">(<span class="text-orange-300">'atomicradio'</span>)</span><span class="text-gray-400">,</span> <span class="text-gray-600"><a href="https://atomic.radio"># https://atomic.radio</a></span>
-            <span class="text-blue-400">eat</span><span class="text-yellow-300">(<span class="text-orange-300">'pizza'</span>)</span><span class="text-gray-400">,</span>
-            <span class="text-blue-400">sleep</span><span class="text-yellow-300">()</span><span class="text-gray-400">,</span>
-            <span class="text-blue-400">code</span><span class="text-yellow-300">(<span class="text-orange-300">'astroid'</span>)</span><span class="text-gray-400">,</span> <span class="text-gray-600"><a href="https://astroid.cc"># https://astroid.cc</a></span>
-            <span class="text-blue-400">repeat</span><span class="text-yellow-300">()</span>
+            <span class="text-blue-400">listen_to</span><span class="text-yellow-300">(</span><span class="text-orange-300">'atomic.radio'</span><span class="text-yellow-300">)</span><span class="text-gray-400">,</span>  <span class="text-gray-500"># 🎵 https://atomic.radio</span>
+            <span class="text-blue-400">fuel_up</span><span class="text-yellow-300">(</span><span class="text-orange-300">'pizza'</span><span class="text-yellow-300">)</span><span class="text-gray-400">,</span>
+            <span class="text-blue-400">code</span><span class="text-yellow-300">(</span><span class="text-orange-300">'astroid'</span><span class="text-yellow-300">)</span><span class="text-gray-400">,</span>  <span class="text-gray-500"># 🚀 https://astroid.cc</span>
     <span class="text-yellow-300">]</span>
-<span class="text-yellow-300">}</span><span class="text-gray-400">;</span></span></code></pre>
+<span class="text-yellow-300">}</span>
+
+<span class="text-gray-500"># Currently working on something amazing... 🔥</span>
+<span class="text-purple-400">print</span><span class="text-yellow-300">(</span><span class="text-orange-300">f"Hello! I'm {developer['name']} 👋"</span><span class="text-yellow-300">)</span></code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -998,31 +308,55 @@
             </svg>
         </div>
 
-        <section class="relative bg-[#03012C] my-24 z-0">
-            <img src="./assets/ZeroTwo_2.jpg" alt="" class="zero-two-showcase-bg">
-            <div class="container mx-auto py-12">
-                <h2 class="text-3xl font-bold text-gray-200 text-center mb-8">Showcase of my creations</h2>
-                <div class="relative flex justify-center mb-10">
+        <section class="relative bg-gradient-to-br from-[#0F0C29] via-[#24243e] to-[#302b63] py-32 z-0 overflow-hidden">
+            <!-- Animated Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+            
+            <img src="./assets/ZeroTwo_2.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-5 blur-sm">
+            
+            <div class="container mx-auto py-12 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-6">
+                        My Creations
+                    </h2>
+                    <p class="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed">
+                        Explore the projects I've built with passion and dedication
+                    </p>
+                </div>
+                
+                <div class="relative flex justify-center mb-16">
                     <select id="cardSelector" class="hidden">
                         <option value="zerotwo">Zero Two</option>
                         <option value="astroid">Astroid</option>
                     </select>
-                    <div class="relative w-60">
+                    <div class="relative w-80">
                         <button id="dropdownButton"
-                            class="w-full flex justify-between items-center px-4 py-2 bg-white border border-gray-300 rounded-xl shadow-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-pink-400 transition duration-200"
+                            class="w-full flex justify-between items-center px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl shadow-lg text-white hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all duration-300 group"
                             onclick="toggleDropdown()">
-                            <span id="dropdownSelected">Zero Two</span>
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
+                            <span id="dropdownSelected" class="font-medium">Zero Two</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <ul id="dropdownOptions"
-                            class="hidden absolute z-10 w-full mt-2 bg-white border border-gray-200 rounded-xl shadow-md">
+                            class="hidden absolute z-20 w-full mt-2 bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
                             <li onclick="selectOption('Zero Two', 'zerotwo')"
-                                class="px-4 py-2 hover:bg-pink-100 cursor-pointer rounded-t-xl">Zero Two</li>
+                                class="px-6 py-4 hover:bg-white/10 cursor-pointer text-white transition-colors duration-200 border-b border-white/10 last:border-b-0">
+                                <span class="flex items-center">
+                                    <span class="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
+                                    Zero Two
+                                </span>
+                            </li>
                             <li onclick="selectOption('Astroid', 'astroid')"
-                                class="px-4 py-2 hover:bg-pink-100 cursor-pointer rounded-b-xl">Astroid</li>
+                                class="px-6 py-4 hover:bg-white/10 cursor-pointer text-white transition-colors duration-200">
+                                <span class="flex items-center">
+                                    <span class="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
+                                    Astroid
+                                </span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -1066,28 +400,49 @@
                         }
                     });
                 </script>
-                <div id="cardsContainer" class="flex justify-center items-center min-h-[200px]">
-                    <!-- Cards will pop up here -->
+                <div id="cardsContainer" class="flex justify-center items-center min-h-[400px]">
+                    <!-- Zero Two Card -->
                     <div id="zerotwo"
-                        class="hidden card-popup bg-gray-800 rounded-xl mb-50 shadow-xl p-2 transition-all duration-300 scale-95 opacity-0"
-                        style="width:600px;max-width:100%;">
-                        <div id="chat-wrapper" class="w-full h-[400px] overflow-scroll relative">
-                            <div class="flex flex-col mb-4">
+                        class="hidden card-popup showcase-card rounded-3xl shadow-2xl p-8 transition-all duration-500 scale-95 opacity-0 max-w-4xl w-full mx-4">
+                        
+                        <!-- Card Header -->
+                        <div class="flex flex-col lg:flex-row items-center mb-8 gap-6">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full blur-lg opacity-50"></div>
+                                <img src="" id="zerotwo-profile" loading="lazy" alt="Zero Two Profile"
+                                    class="relative w-20 h-20 rounded-full border-2 border-white/20 shadow-xl hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <h3 class="text-3xl font-black text-transparent bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text mb-2">
+                                    Zero Two Discord Bot
+                                </h3>
+                                <p class="text-gray-300 text-lg">Your personal Discord companion with Zero Two's charm</p>
                                 <a href="https://discordapp.com/users/1368272424855932999" target="_blank"
-                                    rel="noopener noreferrer" class="flex items-center">
-                                    <img src="" id="zerotwo-profile" loading="lazy" alt="Zero Two Profile"
-                                        class="w-12 h-12 rounded-full border-1 border-pink-400 shadow-lg hover:scale-105 transition-transform duration-200 mr-3">
-                                    <div class="flex flex-col">
-                                        <span class="name font-semibold text-white">Zero Two</span>
-                                        <span class="text-white text-s">Hey Darling! I'm Zero Two, a personal Discord
-                                            Bot.</span>
-                                    </div>
+                                    rel="noopener noreferrer" 
+                                    class="inline-flex items-center mt-3 px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                                    </svg>
+                                    View Profile
                                 </a>
                             </div>
-
                         </div>
-                        <input type="text" id="command-interface" placeholder="/help"
-                            class="w-full text-gray-900 p-2 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+
+                        <!-- Chat Interface -->
+                        <div id="chat-wrapper" class="bg-black/20 rounded-2xl p-6 h-80 overflow-y-auto border border-white/10 mb-6 backdrop-blur-sm">
+                            <!-- Chat messages will appear here -->
+                        </div>
+                        
+                        <!-- Command Input -->
+                        <div class="relative">
+                            <input type="text" id="command-interface" placeholder="Type /help to get started..."
+                                class="w-full bg-white/10 backdrop-blur-sm text-white placeholder-gray-400 p-4 rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition-all duration-300">
+                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <script>
@@ -1450,15 +805,21 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="relative bg-white py-24">
+        <section id="about" class="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 py-32">
             <!-- Modern Wave Divider -->
-            <div class="absolute top-30 left-0 w-full overflow-hidden"
-                style="transform: translateY(-99%) rotate(180deg);">
+            <div class="absolute top-0 left-0 w-full overflow-hidden transform -translate-y-px">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none"
-                    class="w-full h-[160px]">
-                    <path fill="#ffffff" fill-opacity="1"
-                        d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    class="w-full h-[120px]">
+                    <path fill="url(#gradient1)" fill-opacity="1"
+                        d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
                     </path>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0F0C29;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#24243e;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#302b63;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
                 </svg>
             </div>
 
@@ -1475,7 +836,7 @@
                         <p class="text-gray-900 mb-6">
                             I'm an 18 year old hobbyist full-stack developer from Germany. I have a passion for building
                             backend systems and APIs. I'm currently working on a project called Astroid, a simple to use
-                            multi-platform bridge that connects various platforms like Discord, Nerimity and Guilded
+                            multi-platform bridge that connect various platforms like Discord, Nerimity and Guilded
                             together. <br>
                             I'm obsessed with Zero Two, she just cute af.
                         </p>
@@ -1500,6 +861,42 @@
                                 <i class="fas fa-check-circle text-primary mr-2"></i>
                                 <span>System administration</span>
                             </div>
+                            
+                            <div class="skill-item group">
+                                <div class="flex items-center p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border border-green-100 hover:border-green-200 transition-all duration-300 hover:shadow-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-server text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Backend Systems</h4>
+                                        <p class="text-gray-600 text-sm">Learning how to build scalable Architecture</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item group">
+                                <div class="flex items-center p-4 bg-gradient-to-r from-purple-50 to-violet-50 rounded-2xl border border-purple-100 hover:border-purple-200 transition-all duration-300 hover:shadow-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-database text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Database</h4>
+                                        <p class="text-gray-600 text-sm">SurrealDB, MariaDB & PostgreSQL</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item group">
+                                <div class="flex items-center p-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-100 hover:border-pink-200 transition-all duration-300 hover:shadow-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-project-diagram text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">Project Management</h4>
+                                        <p class="text-gray-600 text-sm">Planning and executing projects effectively</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1509,556 +906,775 @@
         <!-- Expertise Section -->
         <section id="expertise" class="relative bg-white my-24">
 
-            <!-- Skills Section with Background Effects -->
-            <section id="skills" class="section-wrapper py-20 bg-[#03012C] text-white">
-                <!-- Background Blur Effects -->
-                <div class="bg-blur-effect primary" style="top: 20%; left: 10%;"></div>
-                <div class="bg-blur-effect secondary" style="top: 50%; right: 15%;"></div>
-                <div class="bg-blur-effect accent" style="bottom: 10%; left: 30%;"></div>
+            <!-- Skills Section with Modern Design -->
+            <section id="skills" class="relative py-32 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+                <!-- Animated Background Elements -->
+                <div class="absolute inset-0">
+                    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                    <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+                </div>
 
-                <div class="section-content container mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-bold text-center">Skills & Expertise</h2>
-                        <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
-                            These are my skills and expertise in various technologies and tools that I use to build
-                            amazing
-                            projects.
+                <!-- Floating Tech Icons -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute top-20 left-20 text-4xl opacity-10 animate-float-1">⚡</div>
+                    <div class="absolute top-40 right-32 text-3xl opacity-10 animate-float-2">🚀</div>
+                    <div class="absolute bottom-32 left-1/4 text-5xl opacity-10 animate-float-3">💻</div>
+                    <div class="absolute bottom-20 right-20 text-3xl opacity-10 animate-float-4">🔧</div>
+                    <div class="absolute top-1/4 right-1/4 text-4xl opacity-10 animate-float-5"><img src="https://cdn.discordapp.com/emojis/1402295229024964700.webp?size=48" alt=""></div>
+                    <div class="absolute top-1/2 left-1/4 text-3xl opacity-10 animate-float-6"><img src="https://cdn.discordapp.com/emojis/1075117090203250848.webp?size=48" alt=""></div>
+                </div>
+
+                <div class="relative container mx-auto px-4">
+                    <div class="text-center mb-20">
+                        <h2 class="text-6xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-6">
+                            Skills & Expertise
+                        </h2>
+                        <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
+                        <p class="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                            Transforming ideas into powerful digital solutions with cutting-edge technologies and creative problem-solving
                         </p>
                     </div>
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Frontend Development -->
-                        <div
-                            class="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="text-center mb-6">
-                                <div
-                                    class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-code text-3xl text-blue-500"></i>
+                        <div class="skill-card-modern group p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4">
+                            <div class="text-center mb-8">
+                                <div class="relative inline-block mb-6">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                    <div class="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                                        <i class="fas fa-code text-3xl text-white"></i>
+                                    </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800">Frontend</h3>
+                                <h3 class="text-2xl font-bold text-white mb-3">Frontend</h3>
+                                <p class="text-gray-300 text-sm mb-6">Modern web interfaces</p>
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">JavaScript</span>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML5</span>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">CSS</span>
-                                <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Tailwind</span>
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 rounded-xl text-sm font-medium backdrop-blur-sm">JavaScript</span>
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 rounded-xl text-sm font-medium backdrop-blur-sm">HTML5</span>
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 rounded-xl text-sm font-medium backdrop-blur-sm">CSS3</span>
+                                <span class="px-4 py-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 rounded-xl text-sm font-medium backdrop-blur-sm">Tailwind</span>
                             </div>
                         </div>
 
                         <!-- Backend Development -->
-                        <div
-                            class="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="text-center mb-6">
-                                <div
-                                    class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-server text-3xl text-green-500"></i>
+                        <div class="skill-card-modern group p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4">
+                            <div class="text-center mb-8">
+                                <div class="relative inline-block mb-6">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                    <div class="relative w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                                        <i class="fas fa-server text-3xl text-white"></i>
+                                    </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800">Backend</h3>
+                                <h3 class="text-2xl font-bold text-white mb-3">Backend</h3>
+                                <p class="text-gray-300 text-sm mb-6">Scalable server solutions</p>
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
-                                <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Python</span>
-                                <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">FastAPI</span>
-
+                                <span class="px-4 py-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl text-sm font-medium backdrop-blur-sm">Python</span>
+                                <span class="px-4 py-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl text-sm font-medium backdrop-blur-sm">FastAPI</span>
+                                <span class="px-4 py-2 bg-green-500/20 border border-green-400/30 text-green-300 rounded-xl text-sm font-medium backdrop-blur-sm">Node.js</span>
                             </div>
                         </div>
 
                         <!-- Database & Cloud -->
-                        <div
-                            class="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="text-center mb-6">
-                                <div
-                                    class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-database text-3xl text-purple-500"></i>
+                        <div class="skill-card-modern group p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4">
+                            <div class="text-center mb-8">
+                                <div class="relative inline-block mb-6">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-violet-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                    <div class="relative w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                                        <i class="fas fa-database text-3xl text-white"></i>
+                                    </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800">Database & OS</h3>
+                                <h3 class="text-2xl font-bold text-white mb-3">Database & OS</h3>
+                                <p class="text-gray-300 text-sm mb-6">Data management systems and operating systems</p>
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
-                                <span
-                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">SurrealDB</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">MariaDB</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Ubuntu/Debian</span>
-                                <span
-                                    class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Windows</span>
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 rounded-xl text-sm font-medium backdrop-blur-sm">SurrealDB</span>
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 rounded-xl text-sm font-medium backdrop-blur-sm">PostgreSQL</span>
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 rounded-xl text-sm font-medium backdrop-blur-sm">MariaDB</span>
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 rounded-xl text-sm font-medium backdrop-blur-sm">Linux</span>
+                                <span class="px-4 py-2 bg-purple-500/20 border border-purple-400/30 text-purple-300 rounded-xl text-sm font-medium backdrop-blur-sm">Windows</span>
                             </div>
                         </div>
 
                         <!-- Tools & Others -->
-                        <div
-                            class="glass-card p-6 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="text-center mb-6">
-                                <div
-                                    class="w-16 h-16 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-tools text-3xl text-pink-500"></i>
+                        <div class="skill-card-modern group p-8 rounded-3xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4">
+                            <div class="text-center mb-8">
+                                <div class="relative inline-block mb-6">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                                    <div class="relative w-20 h-20 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                                        <i class="fas fa-tools text-3xl text-white"></i>
+                                    </div>
                                 </div>
-                                <h3 class="text-xl font-bold text-gray-800">Tools & Others</h3>
+                                <h3 class="text-2xl font-bold text-white mb-3">Tools & DevOps</h3>
+                                <p class="text-gray-300 text-sm mb-6">Development workflow</p>
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
-                                <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Git</span>
-                                <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Visual Studio
-                                    Code</span>
-                                <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Postman</span>
+                                <span class="px-4 py-2 bg-pink-500/20 border border-pink-400/30 text-pink-300 rounded-xl text-sm font-medium backdrop-blur-sm">Git</span>
+                                <span class="px-4 py-2 bg-pink-500/20 border border-pink-400/30 text-pink-300 rounded-xl text-sm font-medium backdrop-blur-sm">VS Code</span>
+                                <span class="px-4 py-2 bg-pink-500/20 border border-pink-400/30 text-pink-300 rounded-xl text-sm font-medium backdrop-blur-sm">Postman</span>
+                                <span class="px-4 py-2 bg-pink-500/20 border border-pink-400/30 text-pink-300 rounded-xl text-sm font-medium backdrop-blur-sm">CI/CD</span>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
 
-            <!-- Projects Section with Background Effects -->
-            <section id="projects" class="section-wrapper py-20 bg-gray-50">
-                <!-- Background Blur Effects -->
-                <div class="bg-blur-effect primary" style="top: 15%; right: 10%;"></div>
-                <div class="bg-blur-effect secondary" style="bottom: 20%; left: 15%;"></div>
-                <div class="bg-blur-effect accent" style="top: 60%; left: 50%;"></div>
+            <!-- Projects Section with Modern Design -->
+            <section id="projects" class="relative py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+                <!-- Background Elements -->
+                <div class="absolute inset-0">
+                    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-pink-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"></div>
+                </div>
 
-                <div class="section-content container mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-bold section-title inline-block">Featured Projects</h2>
-                        <p class="text-gray-600 mt-8 max-w-2xl mx-auto">
-                            These are my featured projects that I have worked on. I'm always working on new projects and
-                            ideas to improve my skills and knowledge.
+                <div class="relative container mx-auto px-4">
+                    <div class="text-center mb-20">
+                        <h2 class="text-6xl font-black text-transparent bg-gradient-to-r from-gray-700 via-gray-900 to-gray-700 bg-clip-text mb-6">
+                            Featured Projects
+                        </h2>
+                        <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
+                        <p class="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
+                            Discover my latest projects or contributions
                         </p>
                     </div>
-                    <div class="flex justify-center gap-4 mb-8">
-                        <button
-                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
-                            data-filter="all">
-                            All
+                    
+                    <!-- Project Filter Buttons -->
+                    <div class="flex justify-center gap-4 mb-16 flex-wrap">
+                        <button class="filter-btn active px-8 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg" data-filter="all">
+                            All Projects
                         </button>
-                        <button
-                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
-                            data-filter="api">
-                            API
+                        <button class="filter-btn px-8 py-3 rounded-2xl bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg" data-filter="api">
+                            API & Backend
                         </button>
-                        <button
-                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
-                            data-filter="app">
-                            App
+                        <button class="filter-btn px-8 py-3 rounded-2xl bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg" data-filter="app">
+                            Applications
                         </button>
-                        <button
-                            class="filter-btn px-6 py-2 rounded-full bg-[#ff93b2] text-white hover:bg-[#fc749b] hover:text-white transition-all"
-                            data-filter="other">
+                        <button class="filter-btn px-8 py-3 rounded-2xl bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-gradient-to-r hover:from-purple-500 hover:to-violet-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg" data-filter="other">
                             Other
                         </button>
                     </div>
-                    <div class="swiper-container project-slider">
-                        <div class="swiper-wrapper flex flex-wrap gap-0.5 h-full">
-                            <!-- Project 1 -->
-                            <div class="swiper-slide glass-card-dark rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 project-card"
-                                data-category="api">
-
-                                <div class="relative overflow-hidden group">
-                                    <img src="https://astroid.cc/src/assets/img/Astroid-banner.png" alt="Astroid"
-                                        class="w-[100%] h-40 object-contain transition-transform duration-700 group-hover:scale-90">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                                            <h3 class="text-white font-bold">Astroid</h3>
-                                            <p class="text-gray-200 text-sm">Multi-Platform bridge and REST-API</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl font-bold mb-2 text-white">Astroid</h3>
-                                    <p class="text-gray-200 mb-4">A multi-platform bridge built in Python for connecting
-                                        multiple platforms.</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">FastAPI</span>
-                                        <span
-                                            class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">SurrealDB</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <a href="https://astroid.cc"
-                                        class="btn bg-[#1e3a8a] hover:bg-blue-700 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">Website</a>
-                                    <a href="https://github.com/astroid-app"
-                                        class="btn bg-gray-900 hover:bg-blue-700 border-2 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">GitHub</a>
+                    
+                    <!-- Projects Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto" id="projects-grid">
+                        <!-- Project 1: Astroid -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="api app">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-indigo-800"></div>
+                                <img src="https://astroid.cc/src/assets/img/Astroid-banner.png" alt="Astroid Platform" 
+                                     class="absolute inset-0 w-full h-full object-contain p-8 transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">API</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Platform</span>
                                 </div>
                             </div>
-
-                            <!-- Project 2 -->
-                            <div class="swiper-slide glass-card-dark rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 project-card"
-                                data-category="app">
-                                <div class="relative overflow-hidden group">
-                                    <img src="./assets/PyLeaf-logo.png" alt="PyLeaf"
-                                        class="w-[100%] h-40 object-cover transition-transform duration-700 group-hover:scale-90">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                                            <h3 class="text-white font-bold">PyLeaf</h3>
-                                            <p class="text-gray-200 text-sm">Custom Nanoleaf controller</p>
-                                        </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all duration-300">
+                                        Astroid
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span class="text-green-600 text-sm font-medium">Live</span>
                                     </div>
                                 </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl text-white font-bold mb-2">PyLeaf</h3>
-                                    <p class="text-gray-200 mb-4">A custom built Nanoleaf controller app using my
-                                        PyLeafAPI
-                                        as replacement for the Nanoleaf App</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML</span>
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">JavaScript</span>
-                                        <span
-                                            class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">CSS</span>
-                                        <span
-                                            class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Prototyping</span>
-                                    </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Revolutionary multi-platform bridge connecting Discord, Nerimity, and Guilded. 
+                                    Seamless communication across different platforms with advanced API integration.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-xl">Python</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-xl">FastAPI</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-xl">WebSocket</span>
+                                    <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-xl">Multi-Platform</span>
                                 </div>
-                                <div class="p-6">
-                                    <a href="https://github.com/deutscher775/pyleaf"
-                                        class="btn bg-gray-900 hover:bg-blue-700 border-2 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">GitHub</a>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://astroid.cc" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            Visit Platform
+                                            <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
-
-                            <!-- Project 3 -->
-                            <div class="swiper-slide glass-card-dark rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 project-card"
-                                data-category="api">
-                                <div class="relative overflow-hidden group">
-                                    <img src="./assets/PyLeaf-logo.png" alt="PyLeafAPI"
-                                        class="w-[100%] h-40 object-cover transition-transform duration-700 group-hover:scale-90">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                                            <h3 class="text-white font-bold">PyLeafAPI</h3>
-                                            <p class="text-gray-200 text-sm">Smart home controller API</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl text-white font-bold mb-2">PyLeafAPI</h3>
-                                    <p class="text-gray-200 mb-4">A smart home controller built in Python for
-                                        controlling
-                                        various smart home devices</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
-                                        <span
-                                            class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">FastAPI</span>
-                                        <span
-                                            class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-sm">Prototyping</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <a href="https://github.com/deutscher775/pyleafapi"
-                                        class="btn bg-gray-900 hover:bg-blue-700 border-2 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">GitHub</a>
-                                </div>
-                            </div>
-
-                            <!-- Project 4 -->
-                            <div class="swiper-slide glass-card-dark rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 project-card"
-                                data-category="app">
-                                <div class="relative overflow-hidden group">
-                                    <img src="./assets/presence-preview.png" alt="Presence"
-                                        class="w-[100%] h-40 object-cover transition-transform duration-700 group-hover:scale-90">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                                            <h3 class="text-white font-bold">Presence</h3>
-                                            <p class="text-gray-200 text-sm">Discord Presence Iframe</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl text-white font-bold mb-2">Presence</h3>
-                                    <p class="text-gray-200 mb-4">An API that delivers your current activity rendered as
-                                        an
-                                        iframe</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">HTML</span>
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">JavaScript</span>
-                                        <span
-                                            class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">CSS</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <a href="https://api.deutscher775.de/presence"
-                                        class="btn bg-gray-900 hover:bg-blue-700 border-2 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">Try
-                                        it</a>
-                                </div>
-                            </div>
-
-                            <!-- Project 5 -->
-                            <div class="swiper-slide glass-card-dark rounded-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 project-card"
-                                data-category="other">
-                                <div class="relative overflow-hidden group">
-                                    <img src="./assets/nerimity.py preview.png" alt="nerimity.py"
-                                        class="w-[100%] h-40 object-cover transition-transform duration-700 group-hover:scale-90">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                                            <h3 class="text-white font-bold">nerimity.py</h3>
-                                            <p class="text-gray-200 text-sm">Python framework for Nerimity</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <h3 class="text-xl text-white font-bold mb-2">nerimity.py</h3>
-                                    <p class="text-gray-200 mb-4">A python framework to help you built your Nerimity Bot
-                                        in python</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Python</span>
-                                        <span
-                                            class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">Websockets</span>
-                                    </div>
-                                </div>
-                                <div class="p-6">
-                                    <a href="https://github.com/deutscher775/nerimity.py"
-                                        class="btn bg-gray-900 hover:bg-blue-700 border-2 border-gray-100 text-white px-4 py-2 rounded-full inline-block transition-all hover:shadow-lg">GitHub</a>
-                                </div>
-                            </div>
-
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                        <!-- Add Navigation -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+
+                        <!-- Project 2: Zero Two Bot -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="app other">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-pink-600 to-rose-800"></div>
+                                <img src="./assets/ZeroTwo_1.png" alt="Zero Two Discord Bot" 
+                                     class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Discord</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Bot</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-rose-600 group-hover:bg-clip-text transition-all duration-300">
+                                        Zero Two Bot
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span class="text-green-600 text-sm font-medium">Online</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Personal Discord companion featuring Zero Two's charm. Interactive commands, 
+                                    coding stats integration, and delightful personality for enhanced server experience.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-xl">Python</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-xl">Discord.py</span>
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-xl">AI</span>
+                                    <span class="px-3 py-1 bg-rose-100 text-rose-700 text-sm rounded-xl">Interactive</span>
+                                </div>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://discord.com/oauth2/authorize?client_id=1368272424855932999" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-pink-600 to-rose-600 text-white px-6 py-3 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            Add to Discord
+                                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: atomicradio -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="other app">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-800"></div>
+                                <img src="./assets/atomic.png" alt="atomicradio" 
+                                     class="absolute inset-0 w-full h-full object-contain p-8 transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Radio</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Music</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300">
+                                        atomicradio
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+                                        <span class="text-red-600 text-sm font-medium">Broadcasting</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Premium online radio platform delivering high-quality music streaming. 
+                                    Curated playlists and seamless listening experience for music enthusiasts.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-xl">Streaming</span>
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-xl">Audio</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-xl">Web</span>
+                                    <span class="px-3 py-1 bg-violet-100 text-violet-700 text-sm rounded-xl">24/7</span>
+                                </div>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://atomic.radio" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            Listen Now
+                                            <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4: PyLeaf -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="app">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-600 to-teal-800"></div>
+                                <img src="./assets/PyLeaf-logo.png" alt="PyLeaf" 
+                                     class="absolute inset-0 w-full h-full object-contain p-8 transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">IoT</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">App</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-300">
+                                        PyLeaf Controller
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                                        <span class="text-yellow-600 text-sm font-medium">Development</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Custom Nanoleaf controller application providing enhanced functionality 
+                                    and seamless smart home integration for lighting control enthusiasts.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-xl">HTML</span>
+                                    <span class="px-3 py-1 bg-teal-100 text-teal-700 text-sm rounded-xl">JavaScript</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-xl">CSS</span>
+                                    <span class="px-3 py-1 bg-cyan-100 text-cyan-700 text-sm rounded-xl">IoT</span>
+                                </div>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://github.com/deutscher775/pyleaf" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            View on GitHub
+                                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5: Presence API -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="api">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-orange-600 to-red-800"></div>
+                                <img src="./assets/presence-preview.png" alt="Presence API" 
+                                     class="absolute inset-0 w-full h-full object-contain p-8 transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">API</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Discord</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-red-600 group-hover:bg-clip-text transition-all duration-300">
+                                        Presence API
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span class="text-green-600 text-sm font-medium">Active</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Dynamic Discord presence API delivering real-time activity status as 
+                                    customizable iframe embeds for seamless website integration.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-xl">Python</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-xl">FastAPI</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-xl">HTML</span>
+                                    <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-xl">Real-time</span>
+                                </div>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://api.deutscher775.de/presence" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-3 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            Try API
+                                            <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 6: Personal Website -->
+                        <div class="project-card group bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl border border-white/50 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4" data-category="other">
+                            <!-- Project Image -->
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-br from-slate-600 to-gray-800"></div>
+                                <div class="absolute inset-0 flex items-center justify-center text-white text-6xl">
+                                    <span class="transform group-hover:scale-110 transition-transform duration-700">🌐</span>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <!-- Tech Stack Pills -->
+                                <div class="absolute top-4 right-4 flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Portfolio</span>
+                                    <span class="px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs rounded-full border border-white/20">Web</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-8">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-2xl font-black text-gray-800 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-slate-600 group-hover:to-gray-600 group-hover:bg-clip-text transition-all duration-300">
+                                        This Website
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                        <span class="text-green-600 text-sm font-medium">You're here!</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Modern, responsive portfolio website showcasing my projects and skills. 
+                                    Built with contemporary design principles and smooth animations.
+                                </p>
+                                
+                                <!-- Tech Stack -->
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-xl">HTML5</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-xl">Tailwind CSS</span>
+                                    <span class="px-3 py-1 bg-zinc-100 text-zinc-700 text-sm rounded-xl">JavaScript</span>
+                                    <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-xl">Responsive</span>
+                                </div>
+                                
+                                <!-- Action Buttons -->
+                                <div class="flex gap-3">
+                                    <a href="https://github.com/Deutscher775/Deutscher775.github.io" target="_blank" rel="noopener noreferrer"
+                                       class="flex-1 group/btn bg-gradient-to-r from-slate-600 to-gray-700 text-white px-6 py-3 rounded-xl hover:from-slate-700 hover:to-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+                                        <span class="flex items-center justify-center">
+                                            View Source
+                                            <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <button class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl transition-colors duration-300">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Swiper JS -->
-                    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-                    <script>
-                        var swiper = new Swiper('.swiper-container', {
-                            slidesPerView: 1,
-                            spaceBetween: 25,
-                            loop: false,
-                            speed: 1000,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            navigation: {
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev',
-                            },
-                            autoplay: {
-                                delay: 5000,
-                                disableOnInteraction: false,
-
-
-                            },
-                            breakpoints: {
-                                640: {
-                                    slidesPerView: 1.2,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                },
-                            },
-                        });
-                    </script>
+                    
+                    <!-- View More Button -->
+                    <div class="text-center mt-16">
+                        <a href="https://github.com/Deutscher775" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-2xl hover:from-gray-900 hover:to-black transition-all duration-300 transform hover:scale-105 shadow-xl">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View All Projects on GitHub
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- Project Filter JavaScript -->
+                <script>
+                    // Project Filter Functionality
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const filterButtons = document.querySelectorAll('.filter-btn');
+                        const projectCards = document.querySelectorAll('.project-card');
+                        
+                        filterButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const filter = this.getAttribute('data-filter');
+                                
+                                // Update active button
+                                filterButtons.forEach(btn => {
+                                    btn.classList.remove('active', 'bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
+                                    btn.classList.add('bg-white/80', 'backdrop-blur-sm', 'text-gray-700', 'border', 'border-gray-200');
+                                });
+                                
+                                this.classList.add('active', 'bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
+                                this.classList.remove('bg-white/80', 'backdrop-blur-sm', 'text-gray-700', 'border', 'border-gray-200');
+                                
+                                // Filter projects with animation
+                                projectCards.forEach(card => {
+                                    const categories = card.getAttribute('data-category').split(' ');
+                                    const shouldShow = filter === 'all' || categories.includes(filter);
+                                    
+                                    if (shouldShow) {
+                                        card.style.display = 'block';
+                                        setTimeout(() => {
+                                            card.style.opacity = '1';
+                                            card.style.transform = 'translateY(0) scale(1)';
+                                        }, 10);
+                                    } else {
+                                        card.style.opacity = '0';
+                                        card.style.transform = 'translateY(20px) scale(0.95)';
+                                        setTimeout(() => {
+                                            card.style.display = 'none';
+                                        }, 300);
+                                    }
+                                });
+                            });
+                        });
+                        
+                        // Initialize with all projects shown
+                        projectCards.forEach(card => {
+                            card.style.transition = 'all 0.3s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                        });
+                    });
+                </script>
             </section>
+
         </section>
 
         <!-- Footer -->
-        <footer class="bg-[#fc628f] text-white py-12">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-center md:text-left mb-8 md:mb-0">
-                        <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
-                        <div
-                            class="flex space-x-6 justify-center md:justify-start hover:scale-105 transition-transform duration-300">
-                            <a href="https://github.com/deutscher775"
-                                class="hover:scale-105 transition-transform duration-300 text-3xl">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://tiktok.com/deutscher775"
-                                class="hover:scale-105 transition-transform duration-300 text-3xl">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-                            <a href="https://discordapp.com/users/690123872674119710"
-                                class="hover:scale-105 transition-transform duration-300 text-3xl">
-                                <i class="fab fa-discord"></i>
-                            </a>
+        <footer class="relative bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-20 overflow-hidden">
+            <!-- Background Effects -->
+            <div class="absolute inset-0">
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="relative container mx-auto px-4">
+                <div class="text-center">
+                    <!-- Logo/Brand -->
+                    <div class="mb-12">
+                        <h3 class="text-4xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-4">
+                            Jason
+                        </h3>
+                        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                            Building the future, one line of code at a time
+                        </p>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex justify-center space-x-8 mb-12">
+                        <a href="https://github.com/Deutscher775" target="_blank" rel="noopener noreferrer"
+                            class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                            <svg class="w-8 h-8 text-white group-hover:text-pink-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/users/690123872674119710" target="_blank" rel="noopener noreferrer"
+                            class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                            <svg class="w-8 h-8 text-white group-hover:text-purple-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/deutscher775" target="_blank" rel="noopener noreferrer"
+                            class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                            <svg class="w-8 h-8 text-white group-hover:text-indigo-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-4">Navigation</h4>
+                            <ul class="space-y-2">
+                                <li><a href="#hero" class="text-gray-300 hover:text-pink-400 transition-colors">Home</a></li>
+                                <li><a href="#about" class="text-gray-300 hover:text-pink-400 transition-colors">About</a></li>
+                                <li><a href="#projects" class="text-gray-300 hover:text-pink-400 transition-colors">Projects</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-4">Projects</h4>
+                            <ul class="space-y-2">
+                                <li><a href="https://astroid.cc" target="_blank" class="text-gray-300 hover:text-purple-400 transition-colors">Astroid</a></li>
+                                <li><a href="#" class="text-gray-300 hover:text-purple-400 transition-colors">Zero Two Bot</a></li>
+                                <li><a href="https://atomic.radio" target="_blank" class="text-gray-300 hover:text-purple-400 transition-colors">atomicradio</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-4">Legal</h4>
+                            <ul class="space-y-2">
+                                <li><a href="./imprint" class="text-gray-300 hover:text-indigo-400 transition-colors">Imprint</a></li>
+                                <li><a href="./contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mb-4">Connect</h4>
+                            <ul class="space-y-2">
+                                <li><a href="mailto:contact@deutscher775.de" class="text-gray-300 hover:text-pink-400 transition-colors">Email</a></li>
+                                <li><a href="https://github.com/Deutscher775" target="_blank" class="text-gray-300 hover:text-pink-400 transition-colors">GitHub</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="text-center md:text-right">
-                        <p class="text-gray font-bold">&copy;
-                            <script>document.write(new Date().getFullYear())</script> jesn.zip - All rights
-                            reserved.
-                        </p>
-                        <p class="text-gray-200 mt-2 text-align-right w-[400px]">
-                            The character "Zero Two" is from the anime "Darling in the FranXX" produced by CloverWorks.
-                        </p>
+
+                    <!-- Bottom Bar -->
+                    <div class="pt-8 border-t border-white/10">
+                        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                            <div class="text-center md:text-left">
+                                <p class="text-gray-400 text-sm mb-2">
+                                    © <script>document.write(new Date().getFullYear())</script> Jason. Made with 💖 and lots of Zero Two inspiration
+                                </p>
+                                <p class="text-gray-500 text-xs max-w-md mx-auto md:mx-0">
+                                    The character "Zero Two" is from the anime "Darling in the FranXX" produced by CloverWorks.
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-gray-400 text-sm">Built with</span>
+                                <div class="flex space-x-2">
+                                    <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300">HTML</span>
+                                    <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300">CSS</span>
+                                    <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300">JS</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
 
         <script>
-
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                     // Close mobile menu when a link is clicked
                     const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu.classList.contains('block')) {
-                        mobileMenu.classList.remove('block');
+                    if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
+                        document.querySelector('.mobile-menu-icon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
                     }
                 });
             });
 
-            // Particles Animation
-            const canvas = document.getElementById('particles-canvas');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                let particles = [];
-                const particleCount = 50;
-                const connectionDistance = 150;
-                let animationFrameId;
-
-                function resizeCanvas() {
-                    canvas.width = canvas.offsetWidth;
-                    canvas.height = canvas.offsetHeight;
+            // Enhanced navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                const navMenu = nav.querySelector('.nav-menu');
+                
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-scrolled');
+                    navMenu.classList.add('py-3');
+                    navMenu.classList.remove('py-4');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                    navMenu.classList.remove('py-3');
+                    navMenu.classList.add('py-4');
                 }
+            });
 
-                class Particle {
-                    constructor() {
-                        this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * canvas.height;
-                        this.vx = Math.random() * 2 - 1;
-                        this.vy = Math.random() * 2 - 1;
-                        this.radius = Math.random() * 2 + 1;
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
                     }
-
-                    update() {
-                        this.x += this.vx;
-                        this.y += this.vy;
-
-                        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-                    }
-
-                    draw() {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                        ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
-                        ctx.fill();
-                    }
-                }
-
-                function init() {
-                    particles = [];
-                    for (let i = 0; i < particleCount; i++) {
-                        particles.push(new Particle());
-                    }
-                }
-
-                function connectParticles() {
-                    for (let i = 0; i < particles.length; i++) {
-                        for (let j = i + 1; j < particles.length; j++) {
-                            const dx = particles[i].x - particles[j].x;
-                            const dy = particles[i].y - particles[j].y;
-                            const distance = Math.sqrt(dx * dx + dy * dy);
-
-                            if (distance < connectionDistance) {
-                                const opacity = 1 - (distance / connectionDistance);
-                                ctx.beginPath();
-                                ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})`;
-                                ctx.lineWidth = 1;
-                                ctx.moveTo(particles[i].x, particles[i].y);
-                                ctx.lineTo(particles[j].x, particles[j].y);
-                                ctx.stroke();
-                            }
-                        }
-                    }
-                }
-
-                function animate() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    particles.forEach(particle => {
-                        particle.update();
-                        particle.draw();
-                    });
-                    connectParticles();
-                    animationFrameId = requestAnimationFrame(animate);
-                }
-
-                // Initialize particles
-                window.addEventListener('load', () => {
-                    resizeCanvas();
-                    init();
-                    animate();
                 });
+            }, observerOptions);
 
-                window.addEventListener('resize', () => {
-                    resizeCanvas();
-                    init();
-                });
-            }
-
-            // Project filtering
+            // Observe elements for animation
             document.addEventListener('DOMContentLoaded', () => {
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const projectCards = document.querySelectorAll('.project-card');
-
-                function filterProjects(filter) {
-                    projectCards.forEach(card => {
-                        const category = card.getAttribute('data-category');
-                        if (filter === 'all' || filter === category) {
-                            card.style.opacity = '0';
-                            card.style.display = '';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                            }, 50);
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                }
-
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const filter = button.getAttribute('data-filter');
-
-                        // Update active button state
-                        filterButtons.forEach(btn => {
-                            if (btn === button) {
-                                btn.classList.remove('bg-gray-200', 'text-gray-700');
-                                btn.classList.add('bg-[#ff93b2]', 'text-white');
-                            } else {
-                                btn.classList.remove('bg-blue-500', 'text-white');
-                                btn.classList.add('bg-gray-200', 'text-gray-700');
-                            }
-                        });
-
-                        filterProjects(filter);
-                    });
+                const animateElements = document.querySelectorAll('.skill-card-modern, .skill-item, .showcase-card');
+                animateElements.forEach(el => {
+                    el.classList.add('animate-on-scroll');
+                    observer.observe(el);
                 });
-
-                // Set initial state
-                const defaultFilter = document.querySelector('[data-filter="all"]');
-                if (defaultFilter) {
-                    defaultFilter.click();
-                }
             });
 
-            // Add transition styles if not present
-            if (!document.querySelector('style#project-transitions')) {
-                const style = document.createElement('style');
-                style.id = 'project-transitions';
-                style.classList.add("project-card")
-                document.head.appendChild(style);
-            }
+            // Enhanced loading screen
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    const loadingScreen = document.getElementById('loading-screen');
+                    const mainContent = document.getElementById('main-content');
+                    
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transform = 'scale(1.1)';
+                    
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        mainContent.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            mainContent.style.transition = 'opacity 0.8s ease-in-out';
+                            mainContent.style.opacity = '1';
+                        }, 100);
+                    }, 500);
+                }, 3000);
+            });
+
+            // Parallax effect for background elements
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.particle');
+                
+                parallaxElements.forEach((element, index) => {
+                    const rate = scrolled * -0.5 * (index + 1);
+                    element.style.transform = `translate3d(0, ${rate}px, 0)`;
+                });
+            });
         </script>
     </div>
     </div>
@@ -2131,7 +1747,7 @@
                 });
         }
     </script>
-</body>
 
+</body>
 </html>
 `

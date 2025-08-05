@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sources - Jason</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0F0C29 0%, #24243e 50%, #302b63 100%);
+            color: #ffffff;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #fc7ea2, #ffbace);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 70%;
+        }
+
+        .nav-link:hover {
+            color: #fc7ea2;
+        }
+
+        .bgimg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+            object-position: 70% center;
+            filter: contrast(2) saturate(1.2) brightness(0.3);
+        }
+
+        .sources-container {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .source-item {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        a {
+            color: #fc7ea2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffbace;
+        }
+
+        .animated-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 384px;
+            height: 384px;
+            background: rgba(252, 126, 162, 0.1);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 25%;
+            right: 25%;
+            width: 320px;
+            height: 320px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulse 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .image-preview {
+            transition: transform 0.3s ease;
+        }
+
+        .image-preview:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Image -->
+    <img src="assets/zero_two_rose.png" alt="Background" class="bgimg">
+    
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="nav-menu px-6 py-4 mx-auto transition-all duration-300 backdrop-blur-xl bg-white/10 border-b border-white/10">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Logo -->
+                <a href="/" class="text-3xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">
+                    Jason
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="/#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        About
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="/#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="./contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Contact
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="./imprint" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 relative group">
+                        Imprint
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden flex items-center p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="mobile-menu-icon" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden transition-all duration-300 mt-4">
+                <div class="flex flex-col space-y-4 py-4 px-4 bg-black/20 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <a href="/" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Home</a>
+                    <a href="/#about" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">About</a>
+                    <a href="/#projects" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Projects</a>
+                    <a href="./contact" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Contact</a>
+                    <a href="./imprint" class="nav-link text-white hover:text-pink-400 transition-colors duration-300 text-center py-2">Imprint</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('.mobile-menu-icon');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.querySelector('.mobile-menu-icon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                }
+            });
+        });
+    </script>
+
+    <!-- Sources Section -->
+    <section class="relative min-h-screen py-32">
+        <div class="relative container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h1 class="text-6xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-6">
+                    Image Sources
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto rounded-full mb-8"></div>
+                <p class="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed">
+                    Credits and sources for all images used on this website
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="sources-container rounded-3xl p-8 shadow-2xl mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-info-circle text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">About Image Usage</h2>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        All images used on this website are properly credited below. This page serves as a comprehensive list of image sources, 
+                        ensuring proper attribution and compliance with licensing requirements. If you are the owner of any image and have 
+                        concerns about its usage, please <a href="./contact" class="font-medium">contact me</a>.
+                    </p>
+                </div>
+
+                <!-- Zero Two Images -->
+                <div class="sources-container rounded-3xl p-8 shadow-2xl mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-heart text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Zero Two Character Images</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Zero Two Rose -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/zero_two_rose.png" alt="Zero Two Rose" 
+                                     class="w-full h-32 object-cover rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Zero Two Rose</h3>
+                            <p class="text-gray-300 text-sm mb-3">Background image used across the website</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://github.com/doki-theme/doki-theme-assets/blob/master/backgrounds/zero_two_rose.png">Doki Theme</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Zero Two Background -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/zero_two_bg.png" alt="Zero Two Background" 
+                                     class="w-full h-32 object-cover rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Zero Two Background</h3>
+                            <p class="text-gray-300 text-sm mb-3">Used in about section</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> Darling in the FranXX</p>
+                                <p class="text-gray-400"><strong>Studio:</strong> CloverWorks</p>
+                                <p class="text-gray-400"><strong>Usage:</strong> Fan Art / Educational</p>
+                            </div>
+                        </div>
+
+                        <!-- Zero Two 1 -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/ZeroTwo_1.png" alt="Zero Two 1" 
+                                     class="w-full h-32 object-cover rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Zero Two Portrait</h3>
+                            <p class="text-gray-300 text-sm mb-3">Used for Discord bot project</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://imgur.com/gallery/zero-two-banner-ptKzi62">adiskabruh on Imgur</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Zero Two 2 -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/ZeroTwo_2.jpg" alt="Zero Two 2" 
+                                     class="w-full h-32 object-cover rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Zero Two Scene</h3>
+                            <p class="text-gray-300 text-sm mb-3">Background overlay in projects section</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://de.pinterest.com/pin/774689573393994947/">𝑁𝑜𝑟𝑖 ☾︎ on Pinterest</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Logos -->
+                <div class="sources-container rounded-3xl p-8 shadow-2xl mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-code-branch text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Project Logos & Assets</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Astroid -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/Astroid-banner.png" alt="Astroid Banner" 
+                                     class="w-full h-32 object-contain rounded-lg image-preview bg-white/5">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Astroid Banner</h3>
+                            <p class="text-gray-300 text-sm mb-3">Official Astroid project logo</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://astroid.cc" target="_blank">astroid.cc</a></p>
+                                <p class="text-gray-400"><strong>Owner:</strong> Astroid Development Team</p></p>
+                            </div>
+                        </div>
+
+                        <!-- Atomic Radio -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/atomic.png" alt="atomicradio Logo" 
+                                     class="w-full h-32 object-contain rounded-lg image-preview bg-white/5">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">atomicradio Logo</h3>
+                            <p class="text-gray-300 text-sm mb-3">atomicradio branding</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://atomic.radio" target="_blank">atomic.radio</a></p>
+                                <p class="text-gray-400"><strong>Owner:</strong> Nabil Joumar</p>
+                            </div>
+                        </div>
+
+                        <!-- PyLeaf -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/PyLeaf-logo.png" alt="PyLeaf Logo" 
+                                     class="w-full h-32 object-contain rounded-lg image-preview bg-white/5">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">PyLeaf Logo</h3>
+                            <p class="text-gray-300 text-sm mb-3">PyLeaf controller project logo</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> Custom Design</p>
+                                <p class="text-gray-400"><strong>Owner:</strong> Jason Herrmann</p>
+                            </div>
+                        </div>
+
+                        <!-- Presence Preview -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/presence-preview.png" alt="Presence Preview" 
+                                     class="w-full h-32 object-contain rounded-lg image-preview bg-white/5">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Presence API Preview</h3>
+                            <p class="text-gray-300 text-sm mb-3">Screenshot of Presence API interface</p>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> Screenshot</p>
+                                <p class="text-gray-400"><strong>Owner:</strong> Jason Herrmann</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Icons -->
+                <div class="sources-container rounded-3xl p-8 shadow-2xl mb-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-share-alt text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Social Media & Platform Icons</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- GitHub -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/github-logo.svg" alt="GitHub Logo" 
+                                     class="w-full h-20 object-contain rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">GitHub</h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://github.com/logos">GitHub Brand Assets</a></p>
+                                <p class="text-gray-400"><strong>License:</strong> Trademark Usage</p>
+                            </div>
+                        </div>
+
+                        <!-- Discord -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/discord-icon.svg" alt="Discord Icon" 
+                                     class="w-full h-20 object-contain rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Discord</h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://discord.com/branding">Discord Brand Assets</a></p>
+                                <p class="text-gray-400"><strong>License:</strong> Trademark Usage</p>
+                            </div>
+                        </div>
+
+                        <!-- TikTok -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/tiktok-logo.png" alt="TikTok Logo" 
+                                     class="w-full h-20 object-contain rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">TikTok</h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://tiktokbrandhub.com/">TikTok Brand Assets</a></p>
+                                <p class="text-gray-400"><strong>License:</strong> Trademark Usage</p>
+                            </div>
+                        </div>
+
+                        <!-- Spotify -->
+                        <div class="source-item rounded-2xl p-6">
+                            <div class="mb-4">
+                                <img src="assets/spotify-logo.svg" alt="Spotify Logo" 
+                                     class="w-full h-20 object-contain rounded-lg image-preview">
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Spotify</h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-400"><strong>Source:</strong> <a href="https://developer.spotify.com/documentation/design">Spotify Brand Assets</a></p>
+                                <p class="text-gray-400"><strong>License:</strong> Trademark Usage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright Notice -->
+                <div class="sources-container rounded-3xl p-8 shadow-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-copyright text-white text-lg"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Copyright Notice</h2>
+                    </div>
+                    
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <p>
+                            <strong>Zero Two Character:</strong> All Zero Two images are from the anime "Darling in the FranXX" 
+                            produced by CloverWorks. These images are used for fan art and educational purposes under fair use. 
+                            All rights belong to their respective owners.
+                        </p>
+                        <p>
+                            <strong>Social Media Logos:</strong> All social media platform logos and icons are trademarks 
+                            of their respective companies and are used in accordance with their brand guidelines.
+                        </p>
+                        <p>
+                            <strong>Project Assets:</strong> Project logos and custom graphics created by me are my own work 
+                            unless otherwise specified. Some project assets may be used with permission from their creators.
+                        </p>
+                        <p class="text-sm text-gray-400 mt-6">
+                            If you believe any content on this page infringes on your copyright, please 
+                            <a href="./contact" class="font-medium">contact me</a> and I will address the concern promptly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative text-white py-20 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative container mx-auto px-4">
+            <div class="text-center">
+                <!-- Logo/Brand -->
+                <div class="mb-12">
+                    <h3 class="text-4xl font-black text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text mb-4">
+                        Jason
+                    </h3>
+                    <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                        Building the future, one line of code at a time
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-8 mb-12">
+                    <a href="https://github.com/Deutscher775" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-pink-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.com/users/690123872674119710" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-purple-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://tiktok.com/deutscher775" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-110">
+                        <svg class="w-8 h-8 text-white group-hover:text-indigo-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="pt-8 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div class="text-center md:text-left">
+                            <p class="text-gray-400 text-sm mb-2">
+                                © <script>document.write(new Date().getFullYear())</script> Jason. Made with 💖 and lots of Zero Two inspiration
+                            </p>
+                            <p class="text-gray-500 text-xs max-w-md mx-auto md:mx-0">
+                                The character "Zero Two" is from the anime "Darling in the FranXX" produced by CloverWorks.
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <a href="./contact" class="text-gray-400 hover:text-pink-400 transition-colors text-sm">Contact</a>
+                            <span class="text-gray-600">•</span>
+                            <a href="./imprint" class="text-gray-400 hover:text-pink-400 transition-colors text-sm">Imprint</a>
+                            <span class="text-gray-600">•</span>
+                            <a href="/" class="text-gray-400 hover:text-pink-400 transition-colors text-sm">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
