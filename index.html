@@ -14,8 +14,7 @@
 			rel="stylesheet" />
 		<link
 			rel="stylesheet"
-			href="./main.css" />
-		<script src="https://cdn.tailwindcss.com"></script>
+			href="./out.css" />
 	</head>
 
 	<body class="bg-gray-900 overflow-overlay">
@@ -241,9 +240,9 @@
 						class="flex flex-col lg:flex-row items-center justify-between gap-12">
 						<!-- Left Content -->
 						<div class="lg:w-1/2 space-y-8 stagger-fade-in">
-							<div class="space-y-6">
+							<div class="space-y-6 mt-150 md:mt-0">
 								<h1
-									class="header-name text-5xl sm:text-6xl lg:text-8xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-transparent bg-clip-text leading-tight py-2 hover:scale-105 transition-all duration-500 drop-shadow-2xl">
+									class="header-name md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text leading-tight py-2 hover:scale-105 transition-all duration-500 drop-shadow-2xl">
 									Jason
 								</h1>
 								<p
@@ -362,6 +361,7 @@
 			<!-- Modern Wave Divider -->
 			<div
 				class="absolute w-full overflow-hidden"
+				id="wave-divider1"
 				style="transform: translateY(-99%); z-index: 100">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -374,6 +374,17 @@
 						d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,176C672,192,768,192,864,181.3C960,171,1056,149,1152,144C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
 				</svg>
 			</div>
+			<script>
+				window.addEventListener("resize", () => {
+					const waveDivider1 = document.getElementById("wave-divider1");
+					const waveHeight = window.innerWidth < 768 ? 120 : 160;
+					waveDivider1.style.height = `${waveHeight}px`;
+					waveDivider1.style.transition = "transform 0.3s ease-in-out";
+					waveDivider1.style.width = "120%";
+					waveDivider1.style.transform = "translateX(-10%) translateY(-99%)";
+				});
+				window.dispatchEvent(new Event("resize"));
+			</script>
 
 			<section
 				class="relative bg-gradient-to-br from-[#0F0C29] via-[#24243e] to-[#302b63] py-32 z-0 overflow-hidden">
@@ -1104,7 +1115,7 @@
 							</div>
 
 							<!-- Skills Grid -->
-							<div class="grid grid-cols-2 gap-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div class="skill-item group">
 									<div
 										class="flex items-center p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:shadow-lg">
@@ -1174,14 +1185,8 @@
 				</div>
 			</section>
 
-			<!-- Expertise Section -->
-			<section
-				id="expertise"
-				class="relative bg-white my-24">
-				<!-- Skills Section with Modern Design -->
-				<section
-					id="skills"
-					class="relative py-32 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+			<!-- Skills Section with Modern Design -->
+			<section id="skills" class="relative py-32 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
 					<!-- Animated Background Elements -->
 					<div class="absolute inset-0">
 						<div
@@ -1193,26 +1198,137 @@
 					</div>
 
 					<!-- Floating Tech Icons -->
-					<div class="absolute inset-0 overflow-hidden pointer-events-none">
-						<div class="floater absolute text-4xl opacity-50">⚡</div>
-						<div class="floater absolute text-3xl opacity-50">🚀</div>
-						<div class="floater absolute text-5xl opacity-50">💻</div>
-						<div class="floater absolute text-3xl opacity-50">🔧</div>
-						<div class="floater absolute text-4xl opacity-50">
+					<div class="absolute inset-0 overflow-hidden z-50">
+						<div class="floater absolute text-4xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event); startMouseShake()">⚡</div>
+						<div class="floater absolute text-3xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">🚀</div>
+						<div class="floater absolute text-5xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">💻</div>
+						<div class="floater absolute text-3xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">🔧</div>
+						<div class="floater absolute text-4xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">
 							<img
 								src="https://cdn.discordapp.com/emojis/1075117090203250848.webp?size=48"
-								alt="" />
+								alt=""
+								class="pointer-events-none" />
 						</div>
-						<div class="floater absolute text-3xl opacity-50">
+						<div class="floater absolute text-3xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">
 							<img
 								src="https://cdn.discordapp.com/emojis/1402295229024964700.webp?size=48"
-								alt="" />
+								alt=""
+								class="pointer-events-none" />
 						</div>
 					</div>
 
 					<script>
+						// Track which icons are currently being thrown
+						const thrownIcons = new Set();
+						
+						// Mouse shake function
+						function startMouseShake() {
+							const originalCursor = document.body.style.cursor;
+							let shakeInterval;
+							let shakeCount = 0;
+							const maxShakes = 30; // Number of shake movements
+							
+							// Create custom CSS for shake effect
+							const style = document.createElement('style');
+							style.textContent = `
+								@keyframes mouseShake {
+									0%, 100% { transform: translate(0, 0); }
+									10% { transform: translate(-2px, -1px); }
+									20% { transform: translate(2px, -2px); }
+									30% { transform: translate(-1px, 2px); }
+									40% { transform: translate(1px, -1px); }
+									50% { transform: translate(-2px, 1px); }
+									60% { transform: translate(2px, 1px); }
+									70% { transform: translate(-1px, -2px); }
+									80% { transform: translate(1px, 2px); }
+									90% { transform: translate(-2px, -1px); }
+								}
+								.mouse-shake {
+									animation: mouseShake 0.1s infinite;
+									cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">⚡</text></svg>') 16 16, auto !important;
+								}
+							`;
+							document.head.appendChild(style);
+							
+							// Add shake class to body
+							document.body.classList.add('mouse-shake');
+							
+							// Remove shake effect after duration
+							setTimeout(() => {
+								document.body.classList.remove('mouse-shake');
+								document.head.removeChild(style);
+								document.body.style.cursor = originalCursor;
+							}, 1000); // 3 seconds of shaking
+						}
+						
+						// Initialize icons off-screen
+						function initializeIcons() {
+							document.querySelectorAll(".floater").forEach((el, index) => {
+								// Generate random off-screen position
+								const side = Math.floor(Math.random() * 4); // 0=top, 1=right, 2=bottom, 3=left
+								const vw = window.innerWidth;
+								const vh = window.innerHeight;
+								
+								let startX, startY;
+								
+								switch(side) {
+									case 0: // Top
+										startX = Math.random() * vw;
+										startY = -100 - Math.random() * 200;
+										break;
+									case 1: // Right
+										startX = vw + 100 + Math.random() * 200;
+										startY = Math.random() * vh;
+										break;
+									case 2: // Bottom
+										startX = Math.random() * vw;
+										startY = vh + 100 + Math.random() * 200;
+										break;
+									case 3: // Left
+										startX = -100 - Math.random() * 200;
+										startY = Math.random() * vh;
+										break;
+								}
+								
+								// Set initial off-screen position
+								el.style.left = startX + "px";
+								el.style.top = startY + "px";
+								el.style.opacity = "0";
+								el.style.transform = "scale(0.5) rotate(" + (Math.random() * 360) + "deg)";
+								el.style.transition = "none";
+								
+								// Fly in with delay
+								setTimeout(() => {
+									flyInIcon(el);
+								}, index * 300 + Math.random() * 500);
+							});
+						}
+						
+						// Fly in animation
+						function flyInIcon(el) {
+							const vw = window.innerWidth;
+							const vh = window.innerHeight;
+							const targetX = Math.random() * (vw - 80);
+							const targetY = Math.random() * (vh - 200) + 100;
+							
+							// Start fly-in animation
+							el.style.transition = "all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+							el.style.left = targetX + "px";
+							el.style.top = targetY + "px";
+							el.style.opacity = "0.5";
+							el.style.transform = "scale(1) rotate(" + (Math.random() * 360) + "deg)";
+							
+							// After fly-in, start normal floating
+							setTimeout(() => {
+								randomFloat(el);
+							}, 2000);
+						}
+						
 						// Random floating animation for tech icons with smooth transitions
 						function randomFloat(el) {
+							// Don't animate if icon is currently thrown
+							if (thrownIcons.has(el)) return;
+							
 							const vw = window.innerWidth;
 							const vh = window.innerHeight;
 							const x = Math.random() * (vw - 80);
@@ -1226,16 +1342,126 @@
 								"left 10s ease-in-out, top 10s ease-in-out, transform 10s ease-in-out";
 						}
 
+						// Throw icon animation function
+						function throwIcon(el, event) {
+							// Prevent event bubbling
+							event.stopPropagation();
+							// Add vine boom sound effect
+							if (el.textContent.trim() !== '⚡') {
+							setTimeout(() => {
+								const audio1 = new Audio('./vine-boom.mp3');
+								const audio2 = new Audio('./AHhHhhh.mp3');
+								audio1.volume = 0.1;
+								audio2.volume = 0.05;
+								let random = Math.random();
+								if (random < 0.5) {
+									audio1.play().catch(console.error);
+								} else {
+									audio2.play().catch(console.error);
+								}
+							}, 100);
+							} else {
+								// For the lightning icon, play a different sound
+								setTimeout(() => {
+									const audio = new Audio('./bzzzzzz.mp3');
+									audio.volume = 0.01;
+									audio.play().catch(console.error);
+								}, 100);
+							}
+							
+							// Mark icon as thrown (stops floating animation)
+							thrownIcons.add(el);
+							
+							// Stop any current transitions
+							el.style.transition = "none";
+							
+							// Get mouse position
+							const mouseX = event.clientX;
+							const mouseY = event.clientY;
+							
+							// Get current icon position
+							const rect = el.getBoundingClientRect();
+							const iconCenterX = rect.left + rect.width / 2;
+							const iconCenterY = rect.top + rect.height / 2;
+							
+							// Calculate direction vector from mouse to icon
+							const deltaX = iconCenterX - mouseX;
+							const deltaY = iconCenterY - mouseY;
+							
+							// Normalize and amplify the direction
+							const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+							const normalizedX = deltaX / distance;
+							const normalizedY = deltaY / distance;
+							
+							// Throw distance based on how close the mouse was (closer = further throw)
+							const throwForce = Math.max(200, 600 - distance);
+							const throwX = iconCenterX + normalizedX * throwForce;
+							const throwY = iconCenterY + normalizedY * throwForce;
+							
+							// Add spinning effect based on throw force
+							const spins = 3 + (throwForce / 100);
+							const finalRotation = spins * 360;
+							
+							// Apply throw animation
+							el.style.transition = "all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+							el.style.left = (throwX - rect.width / 2) + "px";
+							el.style.top = (throwY - rect.height / 2) + "px";
+							el.style.transform = `rotate(${finalRotation}deg) scale(1.3)`;
+							el.style.opacity = "1";
+							
+							// Add a slight bounce and fade effect
+							setTimeout(() => {
+								el.style.transform = `rotate(${finalRotation}deg) scale(0.9)`;
+								
+								setTimeout(() => {
+									el.style.transform = `rotate(${finalRotation % 360}deg) scale(1)`;
+									el.style.opacity = "0.5";
+									
+									// Resume floating after throw is complete
+									setTimeout(() => {
+										thrownIcons.delete(el);
+										randomFloat(el);
+									}, 800);
+								}, 300);
+							}, 1800);
+						}
+
 						function animateFloaters() {
 							document.querySelectorAll(".floater").forEach((el, index) => {
-								setTimeout(() => {
-									randomFloat(el);
-								}, index * 2000);
+								// Only animate if not currently thrown
+								if (!thrownIcons.has(el)) {
+									setTimeout(() => {
+										randomFloat(el);
+									}, index * 1667);
+								}
 							});
 						}
-						animateFloaters();
-						setInterval(animateFloaters, 10000);
-						window.onresize = animateFloaters;
+						
+						// Initialize icons when page loads
+						document.addEventListener('DOMContentLoaded', () => {
+							initializeIcons();
+						});
+						
+						// Also initialize if script runs after DOM is ready
+						if (document.readyState === 'loading') {
+							document.addEventListener('DOMContentLoaded', initializeIcons);
+						} else {
+							initializeIcons();
+						}
+						
+						// Regular floating animation interval (after initial fly-in)
+						setTimeout(() => {
+							setInterval(() => {
+								animateFloaters();
+							}, 12000);
+						}, 5000); // Start regular animation after initial fly-in is complete
+						
+						// Handle window resize
+						window.onresize = () => {
+							// Clear thrown icons on resize to prevent positioning issues
+							thrownIcons.clear();
+							animateFloaters();
+						};
 					</script>
 
 					<div class="relative container mx-auto px-4">
@@ -1718,7 +1944,7 @@
 											href="https://atomic.radio"
 											target="_blank"
 											rel="noopener noreferrer"
-											class="flex-1 group/btn bg-[#a9f923] text-white px-6 py-3 rounded-xl hover:bg-gradient-to-r hover:bg-[#1e3a8a] transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
+											class="flex-1 group/btn bg-[#a9f923] text-white px-6 py-3 rounded-xl hover:bg-gradient-to-r hover:from-[#a9f923] hover:to-[#1e3a8a] transition-all duration-300 transform hover:scale-105 shadow-lg text-center font-medium">
 											<span class="flex items-center justify-center">
 												Listen Now
 												<svg
@@ -2331,10 +2557,6 @@
 											class="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300"
 											>JS</span
 										>
-                                        <span
-                                            class="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300"
-                                            >GitHub Copilot</span
-                                        >
 									</div>
 								</div>
 							</div>

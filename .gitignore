@@ -1,1 +1,8 @@
 /backup
+/node_modules
+package-lock.json
+package.json
+debug.html
+fix-test.html
+tailwind.config.js
+tailwindcss.exe
