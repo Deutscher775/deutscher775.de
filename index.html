@@ -1201,7 +1201,7 @@
 					<div class="absolute inset-0 overflow-hidden z-50">
 						<div class="floater absolute text-4xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event); startMouseShake()">⚡</div>
 						<div class="floater absolute text-3xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">🚀</div>
-						<div class="floater absolute text-5xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">💻</div>
+						<div class="floater absolute text-5xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event); createScreenCracks()">💻</div>
 						<div class="floater absolute text-3xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">🔧</div>
 						<div class="floater absolute text-4xl opacity-50 cursor-pointer hover:opacity-80 transition-opacity duration-300 z-50" onclick="throwIcon(this, event)">
 							<img
@@ -1259,6 +1259,162 @@
 								document.head.removeChild(style);
 								document.body.style.cursor = originalCursor;
 							}, 1000); // 3 seconds of shaking
+						}
+						
+						// Screen crack function
+						function createScreenCracks() {
+							const crackContainer = document.createElement('div');
+							crackContainer.className = 'screen-cracks-container';
+							crackContainer.style.cssText = `
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100vw;
+								height: 100vh;
+								pointer-events: none;
+								z-index: 9999;
+								overflow: hidden;
+							`;
+							
+							// Create defective screen stripes (horizontal and vertical)
+							const numStripes = 8;
+							const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffffff', '#000000']; // Rot, Grün, Blau, Weiß, Schwarz
+							
+							for (let i = 0; i < numStripes; i++) {
+								const stripe = document.createElement('div');
+								const isHorizontal = Math.random() > 0.3; // 70% horizontal, 30% vertical
+								const stripeThickness = Math.random() * 20 + 15; // 15-35px dick
+								const position = Math.random() * 100; // 0-100% position
+								const color = colors[Math.floor(Math.random() * colors.length)];
+								
+								stripe.className = `defect-stripe stripe-${i}`;
+								
+								if (isHorizontal) {
+									// Horizontal stripes (scan lines)
+									stripe.style.cssText = `
+										position: absolute;
+										top: ${position}%;
+										left: 0;
+										width: 100%;
+										height: ${stripeThickness}px;
+										opacity: 1;
+										transform: scaleY(1);
+										transition: none;
+										background: ${color};
+									`;
+								} else {
+									// Vertical stripes (column defects)
+									stripe.style.cssText = `
+										position: absolute;
+										top: 0;
+										left: ${position}%;
+										width: ${stripeThickness}px;
+										height: 100%;
+										opacity: 1;
+										transform: scaleX(1);
+										transition: none;
+										background: ${color};
+									`;
+								}
+								
+								crackContainer.appendChild(stripe);
+								
+								// Very rare color changes without animation (5% chance every 3-8 seconds)
+								if (Math.random() < 0.05) {
+									const changeColor = () => {
+										if (Math.random() < 0.15) { // 15% chance every interval
+											const newColor = colors[Math.floor(Math.random() * colors.length)];
+											stripe.style.transition = 'none'; // No animation
+											stripe.style.background = newColor;
+										}
+									};
+									
+									// Schedule rare color changes
+									const changeInterval = setInterval(() => {
+										if (document.body.contains(stripe)) {
+											changeColor();
+										} else {
+											clearInterval(changeInterval);
+										}
+									}, Math.random() * 5000 + 3000); // Every 3-8 seconds
+								}
+							}							// Add CSS for stripe animations
+							const stripeStyle = document.createElement('style');
+							stripeStyle.textContent = `
+								.screen-cracks-container {
+									animation: globalScreenDistortion 0.8s ease-in-out 3;
+								}
+								
+								@keyframes globalScreenDistortion {
+									0%, 100% { 
+										filter: brightness(1) contrast(1);
+										transform: scale(1);
+									}
+									25% { 
+										filter: brightness(1.2) contrast(1.3);
+										transform: scale(1.001);
+									}
+									50% { 
+										filter: brightness(0.8) contrast(0.7);
+										transform: scale(0.999);
+									}
+									75% { 
+										filter: brightness(1.1) contrast(1.1);
+										transform: scale(1.0005);
+									}
+								}
+							`;
+							document.head.appendChild(stripeStyle);
+							
+							document.body.appendChild(crackContainer);
+							
+							// Add simple screen flash overlay
+							const flashOverlay = document.createElement('div');
+							flashOverlay.style.cssText = `
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100vw;
+								height: 100vh;
+								background: rgba(255,255,255,0.1);
+								pointer-events: none;
+								z-index: 9998;
+								opacity: 0;
+								animation: flashFade 0.5s ease-out;
+							`;
+							
+							const flashStyle = document.createElement('style');
+							flashStyle.textContent = `
+								@keyframes flashFade {
+									0% { opacity: 0; }
+									20% { opacity: 0.3; }
+									100% { opacity: 0; }
+								}
+							`;
+							document.head.appendChild(flashStyle);
+							document.body.appendChild(flashOverlay);
+							
+							// Remove everything after 10 seconds
+							setTimeout(() => {
+								// Animate stripes disappearing
+								const stripes = crackContainer.querySelectorAll('.defect-stripe');
+								stripes.forEach((stripe, index) => {
+									setTimeout(() => {
+										stripe.style.transition = 'all 0.4s ease-in';
+										stripe.style.opacity = '0';
+										const isHorizontal = stripe.style.width === '100%';
+										stripe.style.transform = isHorizontal ? 'scaleY(0)' : 'scaleX(0)';
+									}, index * 80);
+								});
+								
+								// Remove everything
+								setTimeout(() => {
+									if (document.body.contains(crackContainer)) document.body.removeChild(crackContainer);
+									if (document.body.contains(flashOverlay)) document.body.removeChild(flashOverlay);
+									if (document.head.contains(stripeStyle)) document.head.removeChild(stripeStyle);
+									if (document.head.contains(flashStyle)) document.head.removeChild(flashStyle);
+								}, 1000);
+							}, 10000); // 10 seconds
 						}
 						
 						// Initialize icons off-screen
