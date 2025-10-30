@@ -1,4 +1,3 @@
-// --- Loading Screen Animation ---
 const messages = [
     { main: "We're getting things ready for you", sub: "" },
     { main: "This might take a few seconds", sub: "Don't close this page" }
@@ -29,7 +28,7 @@ function showNextMessage() {
 }
 setTimeout(showNextMessage, 1000);
 
-// --- Navigation & Mobile Menu ---
+
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('nav');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Dropdown & Card Logic ---
 document.addEventListener('DOMContentLoaded', function() {
     function toggleDropdown() {
         const dropdownOptions = document.getElementById("dropdownOptions");
@@ -100,13 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Set up dropdown button click handler
     const dropdownButton = document.getElementById('dropdownButton');
     if (dropdownButton) {
         dropdownButton.addEventListener('click', toggleDropdown);
     }
 
-    // Set up dropdown option click handlers
     const zerotwoOption = document.querySelector('[data-option="zerotwo"]');
     if (zerotwoOption) {
         zerotwoOption.addEventListener('click', function() {
@@ -121,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close dropdown when clicking outside
     window.addEventListener('click', function (e) {
         const button = document.getElementById('dropdownButton');
         const options = document.getElementById('dropdownOptions');
@@ -131,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Zero Two Bot Embed & Chat ---
 let embed = {
     avatar: 'https://api.deutscher775.de/presence/1368272424855932999/avatar',
     author: 'Zero Two',
@@ -325,7 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Project Filter ---
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
@@ -364,7 +357,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Main Content & Animation ---
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -449,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Banner & API ---
 let cached_banner = localStorage.getItem('banner_url');
 if (cached_banner) {
     const loadingScreen = document.getElementById('loading-screen');
@@ -491,6 +482,16 @@ if (cached_banner) {
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen) {
                 loadingScreen.style.animation = "fadeOut 0.5s forwards";
+                const onAnimEnd = () => {
+                    loadingScreen.style.display = 'none';
+                    loadingScreen.removeEventListener('animationend', onAnimEnd);
+                };
+                loadingScreen.addEventListener('animationend', onAnimEnd);
+                setTimeout(() => {
+                    if (loadingScreen.style.display !== 'none') {
+                        loadingScreen.style.display = 'none';
+                    }
+                }, 600);
             }
             const mainContent = document.getElementById('main-content');
             if (mainContent) {
@@ -510,6 +511,16 @@ if (cached_banner) {
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen) {
                 loadingScreen.style.animation = "fadeOut 0.5s forwards";
+                const onAnimEnd = () => {
+                    loadingScreen.style.display = 'none';
+                    loadingScreen.removeEventListener('animationend', onAnimEnd);
+                };
+                loadingScreen.addEventListener('animationend', onAnimEnd);
+                setTimeout(() => {
+                    if (loadingScreen.style.display !== 'none') {
+                        loadingScreen.style.display = 'none';
+                    }
+                }, 600);
             }
             const mainContent = document.getElementById('main-content');
             if (mainContent) {
@@ -517,12 +528,7 @@ if (cached_banner) {
             }
         });
 }
-// --- Loading Screen Animation (moved from HTML) ---
-// This code is already present in the file
-
-// --- Header Scroll Effect (moved from HTML) ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Header Scroll Effect
     const header = document.querySelector('nav');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -544,7 +550,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -562,7 +567,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
@@ -576,14 +580,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- Year in Footer (moved from HTML) ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
     const yearElement = document.getElementById('current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
 });
 
-// --- ENDE ---
 
