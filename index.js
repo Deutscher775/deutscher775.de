@@ -587,4 +587,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", async function() {
+    try {
+    await fetch("https://google.com").then(resp => {
+        console.log(resp.ok)
+    })
+    } catch (e) {
+        console.error("Not connected to Internet. Skipping loading screen.")
+        document.getElementById("loading-screen").style.display = "none"
+    }
+})
+
 
