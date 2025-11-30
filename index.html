@@ -1099,7 +1099,19 @@
 									I'm an
 									<span
 										class="font-bold text-transparent bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text"
-										>18-year-old</span
+										id="age">
+									<script>
+										(function(){
+											const birth = new Date(2006, 10, 29); // months are 0-based => 10 = November
+											const now = new Date();
+											let age = now.getFullYear() - birth.getFullYear();
+											const m = now.getMonth() - birth.getMonth();
+											if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+											// place result inside the span
+											document.currentScript.parentNode.textContent = `${age}-year-old`;
+										})();
+									</script>
+									</span
 									>
 									passionate developer from Germany. I specialize in building
 									backend systems and creating innovative APIs that power modern
